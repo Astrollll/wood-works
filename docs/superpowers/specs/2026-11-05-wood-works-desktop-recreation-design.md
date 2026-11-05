@@ -49,7 +49,7 @@ Recreate the 14 desktop screens of the Wood Works furniture e-commerce design as
 | Product Title | 700 / 32px / 48px | Product Details page title (Poppins) |
 | Confirm/Sub | 600 / 32px / 48px | Confirmation sub-line + summary panel text (Poppins) |
 
-**Font exception (verbatim from file):** the Custom Orders form uses **Inter 700** for its section labels — form labels 24px ("Furniture Type", "Wood Type", "Length", "Width", "Height", "Quantity"), textarea placeholder 16px ("Describe your preferred design, color, style, or other requests..."), and the upload link 24px `#98CCFF` ("+ Upload Reference Image."). Headings/buttons on that page remain Poppins. Include `@fontsource/inter` weight 700 alongside Poppins.
+**Font exception (verbatim from file):** the Custom Orders page uses **Inter 700** beyond its form labels — page title "Create Your Custom Furniture" (40px) and subtitle "Tell us what you need and we'll help bring your idea to life." (18px), form labels 24px ("Furniture Type", "Wood Type", "Length", "Width", "Height", "Quantity"), textarea placeholder 16px ("Describe your preferred design, color, style, or other requests..."), and the upload link 24px `#98CCFF` ("+ Upload Reference Image."). Only the in-card product summary ("Wooden Dining Table", "Description") and the submit button ("SUBMIT CUSTOM ORDER.") stay Poppins. Include `@fontsource/inter` weight 700 alongside Poppins.
 
 ### Shape & spacing
 | Token | Value |
