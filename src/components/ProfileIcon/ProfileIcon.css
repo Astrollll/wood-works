@@ -1,0 +1,7 @@
+.profile-icon {
+  display: inline-block;
+  width: var(--size-icon);
+  height: var(--size-icon);
+  border-radius: 50%;
+  background-color: var(--color-image-placeholder);
+}
