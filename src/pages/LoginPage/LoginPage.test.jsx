@@ -1,0 +1,74 @@
+import { describe, expect, test } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import LoginPage from './LoginPage'
+
+function renderLogin() {
+  return render(
+    <MemoryRouter initialEntries={['/login']}>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<div>HOME PAGE STUB</div>} />
+        <Route path="/send-otp" element={<div>SEND OTP STUB</div>} />
+        <Route path="/signup" element={<div>SIGNUP STUB</div>} />
+      </Routes>
+    </MemoryRouter>,
+  )
+}
+
+describe('LoginPage (Figma screen 01)', () => {
+  test('renders the exact Figma copy', () => {
+    renderLogin()
+    expect(screen.getByText('Welcome Back')).toBeInTheDocument()
+    expect(screen.getByText('Sign in to continue to Wood Works.')).toBeInTheDocument()
+    expect(screen.getByText('Email Address')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Enter your email')).toBeInTheDocument()
+    expect(screen.getByText('Password')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Enter your password')).toBeInTheDocument()
+    expect(screen.getByText('☐ Remember me')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'LOG IN' })).toBeInTheDocument()
+    expect(screen.getByText(/Don.t have an account\?/)).toBeInTheDocument()
+  })
+
+  test('Forgot Password? links to /send-otp', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.click(screen.getByText('Forgot Password?'))
+    expect(screen.getByText('SEND OTP STUB')).toBeInTheDocument()
+  })
+
+  test('Sign Up line links to /signup', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.click(screen.getByText('Sign Up'))
+    expect(screen.getByText('SIGNUP STUB')).toBeInTheDocument()
+  })
+
+  test('empty submit shows validation errors and stays on login', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(await screen.findAllByRole('alert').then((els) => els.length)).toBeGreaterThan(0)
+    expect(screen.queryByText('HOME PAGE STUB')).not.toBeInTheDocument()
+  })
+
+  test('invalid email shows a format error', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.type(screen.getByPlaceholderText('Enter your email'), 'nope')
+    await user.type(screen.getByPlaceholderText('Enter your password'), 'secret')
+    await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(await screen.findByText('Enter a valid email')).toBeInTheDocument()
+    expect(screen.queryByText('HOME PAGE STUB')).not.toBeInTheDocument()
+  })
+
+  test('valid submit navigates to /home (mock)', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.type(screen.getByPlaceholderText('Enter your email'), 'a@b.com')
+    await user.type(screen.getByPlaceholderText('Enter your password'), 'secret')
+    await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(await screen.findByText('HOME PAGE STUB')).toBeInTheDocument()
+  })
+})
