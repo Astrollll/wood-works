@@ -1,0 +1,17 @@
+.otp {
+  display: flex;
+  gap: var(--gap-otp);
+}
+
+.otp__tile {
+  width: var(--size-otp);
+  height: var(--size-otp);
+  border: none;
+  border-radius: var(--radius-otp);
+  background-color: var(--color-bg);
+  text-align: center;
+  font-size: var(--fs-16);
+  font-weight: var(--w-500);
+  color: var(--color-text);
+  padding: 0;
+}

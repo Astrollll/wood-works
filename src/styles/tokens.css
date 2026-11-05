@@ -36,6 +36,8 @@
   --radius-card: 12px;  /* cards, auth card, hero image, form card */
   --radius-chip: 20px;  /* category chips */
   --radius-otp: 10px;   /* OTP tiles */
+  --size-otp: 44px;     /* OTP tile side (Figma node data) */
+  --gap-otp: 11px;      /* OTP tile gap (Figma group measure) */
 
   /* Layout */
   --page-gutter: 80px;   /* navbar + hero + section horizontal padding */
