@@ -45,6 +45,7 @@
   --gap-md: 16px;
   --gap-lg: 24px;
   --gap-xl: 32px;
+  --pad-card: 40px;  /* auth card padding (Figma node data) */
   --size-btn-h: 48px;
   --size-chip-h: 40px;  /* category chip height (Figma set 257x40) */
   --size-nav-h: 80px;
