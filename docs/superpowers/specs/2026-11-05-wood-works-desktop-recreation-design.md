@@ -44,7 +44,12 @@ Recreate the 14 desktop screens of the Wood Works furniture e-commerce design as
 | Title | 600 / 18px / 27px | Product card title |
 | Body-md | 400/500 / 16px / 24px | Hero subtext, button labels, nav links, page subtext |
 | Body-sm | 400/500 / 14px / 21px | Inputs, labels, card subtitle, links, chips |
-| Price | 600 / 16px / 24px | Product price |
+| Price | 600 / 16px / 24px | Product card price (product-details price is 600 / 24px / 36px) |
+| Catalog Display | 700 / 40px / 48px | "Furniture Collection" (Poppins) |
+| Product Title | 700 / 32px / 48px | Product Details page title (Poppins) |
+| Confirm/Sub | 600 / 32px / 48px | Confirmation sub-line + summary panel text (Poppins) |
+
+**Font exception (verbatim from file):** the Custom Orders form uses **Inter 700** for its section labels — form labels 24px ("Furniture Type", "Wood Type", "Length", "Width", "Height", "Quantity"), textarea placeholder 16px ("Describe your preferred design, color, style, or other requests..."), and the upload link 24px `#98CCFF` ("+ Upload Reference Image."). Headings/buttons on that page remain Poppins. Include `@fontsource/inter` weight 700 alongside Poppins.
 
 ### Shape & spacing
 | Token | Value |
@@ -69,26 +74,41 @@ All screens are 1440px-wide desktop frames. React Router v7 (`react-router-dom`)
 | # | Figma frame (node id) | Route | Contents |
 |---|---|---|---|
 | 01 | Login (2:2) | `/login` (+ `/` redirect) | Split: brown panel (logo 32/700 white + tagline 16/400) / white card (Welcome Back 32/600, email+password inputs, "☐ Remember me" + "Forgot Password?" link row, LOG IN filled button, "Don't have an account? Sign Up") |
-| 02 | Sign Up (27:166) | `/signup` | Same split; Welcome! card: email, password, confirm password, Sign Up button |
-| 03 | Verification Code (28:254) | `/verify` | Post-signup code entry (wire confirmed from frame text at build time) |
-| 04 | Verify OTP Code (28:275) | `/verify-otp` | Alternate OTP entry wired from 07 Send OTP flow |
-| 05 | Reset Password (28:295) | `/reset-password` | New password + confirm, Reset Password button |
-| 06 | Sign up Successful (28:315) | `/signup-success` | Confirmation state screen |
-| 07 | Send OTP Successful (28:369) | `/otp-sent-success` | Confirmation state screen |
-| 08 | Verify OTP page (28:379) | `/verify-otp-sent` | OTP input screen |
-| 09 | Reset password successful (28:389) | `/reset-success` | Confirmation state screen |
+| 02 | Sign Up (27:166) | `/signup` | Same split; Welcome! card ("Sign up your account" 14/400): email, password, confirm password, Sign Up button |
+| 03 | Verification Code (28:254) | `/send-otp` | Forgot-password start: Welcome! / "Reset your password" 14/400 / Email Address + "Enter your email" / filled button "Send OTP" |
+| 04 | Verify OTP Code (28:275) | `/verify-otp` | Welcome! / "Reset your password" / "OTP" label 14/500 / **six 44×44 tiles** (radius 10, `#F7F3EE`, 11px gap) / filled "Send OTP" button |
+| 05 | Reset Password (28:295) | `/reset-password` | Welcome Back / "Reset your password" / New Password ("Enter new password") + Confirm ("Confirm new password") + "☐ Remember me" row / filled "Reset Password" button |
+| 06 | Sign up Successful (28:315) | `/signup-success` | Centered: "Account Sign up Successfully!" 32/600 (natural 2-line wrap) / "You can now Log in" 14/400 / "Go to Log in" (title case) |
+| 07 | Send OTP Successful (28:369) | `/otp-sent-success` | "Email found / Successfully!" 32/600 / "The OTP is sent to your email" 14/400 / "Go to verify OTP" (title case) |
+| 08 | Verify OTP page (28:379) | `/otp-verified` | **Success screen**: "OTP Verified / Successfully!" 32/600 / "You can reset your password" 14/400 / "Go to Reset Password" |
+| 09 | Reset password successful (28:389) | `/reset-success` | "Password updated / successfully!" 32/600 / "You can now Log in" 14/400 / "Go to Log in" (title case) |
 | 10 | Home (3:5) | `/home` | Navbar; hero: left heading 48/700 + subtext 16/400 + [BROWSE FURNITURE filled / CUSTOM ORDER outline]; right 12r image block `#795548`; "Featured Furniture" section → 4 ProductCards (Wooden Dining Table ₱5,000 · Classic Wooden Chair ₱2,500 · Wooden Cabinet ₱7,000 · Study Table ₱4,500) |
 | 11 | Furniture Catalog (3:57) | `/catalog` | "Furniture Collection" title, subtext, chips row (All selected + Tables/Chairs/Cabinets/Beds/Others), 8 ProductCards in 4-col grid |
 | 12 | Product Details (3:142) | `/product/:id` | Left image block; right title/price/description/details/qty stepper/order buttons; related-products row (4 cards) |
 | 13 | Custom Orders (8:147) | `/custom-order` | "Create Your Custom Furniture" + product summary card, form: Furniture Type, Wood Type, Length, Width, Height, Quantity, big notes textarea; "+ Upload Reference Image." blue link; SUBMIT CUSTOM ORDER |
-| 14 | Order Confirmation (13:136) | `/order-confirmation` | Circle mark, ORDER SUBMITTED, summary panel (Order # WW-000x / Furniture / Status: Pending / Estimated Response: 1–3 days), VIEW MY ORDERS filled + BACK TO HOME outline |
+| 14 | Order Confirmation (13:136) | `/order-confirmation` | Circle mark, ORDER SUBMITTED, summary panel (Order # WW-000x / Furniture / Status: Pending / Estimated Response: 1-3 days), VIEW MY ORDERS filled + BACK TO HOME outline |
 
-**Flow wiring (initial; final labels transcribed from Figma text at build time):**
-- Sign Up (02) → Verification Code (03) → Sign up Successful (06) → Login
-- Login "Forgot Password?" → Send OTP Successful (07) → Verify OTP page (08) → Reset Password (05) → Reset password successful (09) → Login
+**Flow wiring (final — transcribed from each frame's actual text/buttons):**
+- Sign Up (02) submit → Sign up Successful (06) → "Go to Log in" → Login (01)
+- Login "Forgot Password?" → Send OTP (03) → "Send OTP" → Send OTP Successful (07) → "Go to verify OTP" → Verify OTP Code (04) → 6 tiles filled + "Send OTP" → OTP Verified (08) → "Go to Reset Password" → Reset Password (05) → "Reset Password" → Reset password successful (09) → "Go to Log in" → Login
 - Login submit → Home
 - Nav: Home → `/home` · Furniture → `/catalog` · Custom Order → `/custom-order` · My Orders → `/my-orders` stub
 - Card "View Details →" / "ORDER NOW" → `/product/:id` / confirmation · "CUSTOMIZE" → `/custom-order` · confirmation buttons → `/my-orders` stub / `/home`
+
+### 4a. Per-screen exact values (extracted, verbatim)
+
+| Where | Exact values |
+|---|---|
+| 04 OTP tiles | 6 tiles, each 44×44, radius 10, fill `#F7F3EE`, 11px gap (group 319×44 on 420 card); label "OTP" 500/14 above |
+| 12 Product Details details line | 14/400, 3 lines: `Material: Solid Wood` / `Size: 4 × 6 ft` / `Availability: Available` (line 12 uses the multiplication sign ×) |
+| 12 Quantity selector | "−" (minus) and "+" buttons (500/16) around value "1"; stepper pills bordered |
+| 12 Related row | 4 identical ProductCards repeating the same product name/price (designer duplicates; keep exactly) |
+| 13 Form Card | bg `#A1887F`, 1px **black** stroke, radius 12, 1106×837; six standard inputs 420×48; labels Inter 700/24 **white**; textarea 860×100 white, **square corners**, Inter 700/16 placeholder `#756E6A`; summary block: image rect 416×265 `#795548`, title Poppins 700/32 `#2B211E`, "Description" 600/16 `#2B211E`, desc + details 400/16 & 400/14 **white**, details lines use `4 x 6 ft` (letter x) |
+| 13 Submit button | 220×48 filled, "SUBMIT CUSTOM ORDER." (with period) |
+| 14 Confirmation | "ORDER SUBMITTED" 700/32 `#2B211E`; sub-line 600/32 `#2B211E`; summary panel 645×293 **square corners** fill `#A1887F`; 4 lines 600/32 white: `Order #: WW-0001` / `Furniture: Custom Dining Table` / `Status: Pending` / `Estimated Response: 1-3 days` (ASCII hyphen); mauve circle mark (ProfileIcon) above heading; buttons: "VIEW MY ORDERS" filled + "BACK TO HOME" outline, both 220×48 |
+| Success screens (06–09) | Centered text; headings wrap naturally at card width; buttons title-case |
+| 05 note | "☐ Remember me" row also on Reset Password screen |
+| 01 note | "Remember me" rendered as literal text with ☐ glyph (no checkbox input in Figma; replicate text visually, keep a real checkbox hidden for a11y |
 
 ## 5. Components (mirror of Figma Design System page)
 

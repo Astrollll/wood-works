@@ -1,0 +1,296 @@
+﻿===== 27:166 02 Sign Up
+<(FRAME) id=27:166 name='02 Sign Up'>
+  <(FRAME) id=27:167 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=27:170 name='Right Panel'>
+    <(FRAME) id=27:171 name='Login Card'>
+      [Welcome!] 'Welcome!' (Poppins 600 32.0px)
+      [Sign up your account] 'Sign up your account' (Poppins 400 14.0px)
+      [Email Address] 'Email Address' (Poppins 500 14.0px)
+      <(INSTANCE) id=27:175 name='Input'>
+        [Placeholder text] 'Enter your email' (Poppins 400 14.0px)
+      [Password] 'Password' (Poppins 500 14.0px)
+      <(INSTANCE) id=27:177 name='Input'>
+        [Placeholder text] 'Enter your password' (Poppins 400 14.0px)
+      [Confirm Password] 'Confirm Password' (Poppins 500 14.0px)
+      <(INSTANCE) id=27:187 name='Input'>
+        [Placeholder text] 'Enter your password' (Poppins 400 14.0px)
+      <(INSTANCE) id=27:181 name='Button'>
+        [Button] 'Sign Up' (Poppins 600 16.0px)
+===== 28:254 03 Verification Code
+<(FRAME) id=28:254 name='03 Verification Code'>
+  <(FRAME) id=28:255 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:258 name='Right Panel'>
+    <(FRAME) id=28:259 name='Login Card'>
+      [Welcome!] 'Welcome!' (Poppins 600 32.0px)
+      [Reset your password] 'Reset your password' (Poppins 400 14.0px)
+      [Email Address] 'Email Address' (Poppins 500 14.0px)
+      <(INSTANCE) id=28:263 name='Input'>
+        [Placeholder text] 'Enter your email' (Poppins 400 14.0px)
+      <(INSTANCE) id=28:268 name='Button'>
+        [Button] 'Send OTP' (Poppins 600 16.0px)
+===== 28:275 04 Verify OTP Code
+<(FRAME) id=28:275 name='04 Verify OTP Code'>
+  <(FRAME) id=28:276 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:279 name='Right Panel'>
+    <(FRAME) id=28:280 name='Login Card'>
+      [Welcome!] 'Welcome!' (Poppins 600 32.0px)
+      [Reset your password] 'Reset your password' (Poppins 400 14.0px)
+      [OTP] 'OTP' (Poppins 500 14.0px)
+      <(INSTANCE) id=28:285 name='Button'>
+        [Button] 'Send OTP' (Poppins 600 16.0px)
+===== 28:295 05 Reset Password
+<(FRAME) id=28:295 name='05 Reset Password'>
+  <(FRAME) id=28:296 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:299 name='Right Panel'>
+    <(FRAME) id=28:300 name='Login Card'>
+      [Welcome Back] 'Welcome Back' (Poppins 600 32.0px)
+      [Reset your password] 'Reset your password' (Poppins 400 14.0px)
+      [New Password] 'New Password' (Poppins 500 14.0px)
+      <(INSTANCE) id=28:304 name='Input'>
+        [Placeholder text] 'Enter new password' (Poppins 400 14.0px)
+      [Confirm New Password] 'Confirm New Password' (Poppins 500 14.0px)
+      <(INSTANCE) id=28:306 name='Input'>
+        [Placeholder text] 'Confirm new password' (Poppins 400 14.0px)
+      <(FRAME) id=28:307 name='Remember Row'>
+        [☐ Remember me] '☐ Remember me' (Poppins 400 14.0px)
+      <(INSTANCE) id=28:310 name='Button'>
+        [Reset Password] 'Reset Password' (Poppins 600 16.0px)
+===== 28:315 06 Sign up Successful
+<(FRAME) id=28:315 name='06 Sign up Successful'>
+  <(FRAME) id=28:316 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:319 name='Right Panel'>
+    <(FRAME) id=28:320 name='Login Card'>
+      [Account Sign up Successfully!] 'Account Sign up Successfully!' (Poppins 600 32.0px)
+      [You can now Log in] 'You can now Log in' (Poppins 400 14.0px)
+      <(INSTANCE) id=28:329 name='Button'>
+        [Reset Password] 'Go to Log in' (Poppins 600 16.0px)
+===== 28:369 07 Send OTP Successful
+<(FRAME) id=28:369 name='07 Send OTP Successful'>
+  <(FRAME) id=28:370 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:373 name='Right Panel'>
+    <(FRAME) id=28:374 name='Login Card'>
+      [Email found Successfully!] 'Email found Successfully!' (Poppins 600 32.0px)
+      [The OTP is sent to your email] 'The OTP is sent to your email' (Poppins 400 14.0px)
+      <(INSTANCE) id=28:377 name='Button'>
+        [Reset Password] 'Go to verify OTP' (Poppins 600 16.0px)
+===== 28:379 08 Verify OTP page
+<(FRAME) id=28:379 name='08 Verify OTP page'>
+  <(FRAME) id=28:380 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:383 name='Right Panel'>
+    <(FRAME) id=28:384 name='Login Card'>
+      [OTP Verified Successfully!] 'OTP Verified Successfully!' (Poppins 600 32.0px)
+      [You can reset your password] 'You can reset your password' (Poppins 400 14.0px)
+      <(INSTANCE) id=28:387 name='Button'>
+        [Reset Password] 'Go to Reset Password' (Poppins 600 16.0px)
+===== 28:389 09 Reset password successful
+<(FRAME) id=28:389 name='09 Reset password successful'>
+  <(FRAME) id=28:390 name='Left Panel'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 32.0px)
+    [Furniture & Custom Woodworks] 'Furniture & Custom Woodworks' (Poppins 400 16.0px)
+  <(FRAME) id=28:393 name='Right Panel'>
+    <(FRAME) id=28:394 name='Login Card'>
+      [Password updated successfully!] 'Password updated successfully!' (Poppins 600 32.0px)
+      [You can now Log in] 'You can now Log in' (Poppins 400 14.0px)
+      <(INSTANCE) id=28:397 name='Button'>
+        [Reset Password] 'Go to Log in' (Poppins 600 16.0px)
+===== 3:57 11 Furniture Catalog
+<(FRAME) id=3:57 name='11 Furniture Catalog'>
+  <(INSTANCE) id=3:58 name='Navbar'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 24.0px)
+    <(FRAME) id=I3:58;1:54 name='Nav Links'>
+      [Home] 'Home' (Poppins 500 16.0px)
+      [Furniture] 'Furniture' (Poppins 500 16.0px)
+      [Custom Order] 'Custom Order' (Poppins 500 16.0px)
+      [My Orders] 'My Orders' (Poppins 500 16.0px)
+    <(FRAME) id=I3:58;1:59 name='Right Group'>
+  <(FRAME) id=3:67 name='Catalog Body'>
+    [Furniture Collection] 'Furniture Collection' (Poppins 700 40.0px)
+    [Browse our handcrafted furniture.] 'Browse our handcrafted furniture.' (Poppins 400 16.0px)
+    <(FRAME) id=3:70 name='Category Row'>
+      <(INSTANCE) id=3:71 name='Category Button'>
+        [Category] 'All' (Poppins 500 14.0px)
+      <(INSTANCE) id=3:73 name='Category Button'>
+        [Category] 'Tables' (Poppins 500 14.0px)
+      <(INSTANCE) id=3:75 name='Category Button'>
+        [Category] 'Chairs' (Poppins 500 14.0px)
+      <(INSTANCE) id=3:77 name='Category Button'>
+        [Category] 'Cabinets' (Poppins 500 14.0px)
+      <(INSTANCE) id=3:79 name='Category Button'>
+        [Category] 'Beds' (Poppins 500 14.0px)
+      <(INSTANCE) id=3:81 name='Category Button'>
+        [Category] 'Others' (Poppins 500 14.0px)
+    <(FRAME) id=3:83 name='Product Grid'>
+      <(FRAME) id=3:84 name='Grid Row 1'>
+        <(INSTANCE) id=3:85 name='Product Card'>
+          <(FRAME) id=I3:85;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Wooden Dining Table' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱5,000' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+        <(INSTANCE) id=3:92 name='Product Card'>
+          <(FRAME) id=I3:92;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Classic Wooden Chair' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱2,500' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+        <(INSTANCE) id=3:99 name='Product Card'>
+          <(FRAME) id=I3:99;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Wooden Cabinet' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱7,000' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+        <(INSTANCE) id=3:106 name='Product Card'>
+          <(FRAME) id=I3:106;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Study Table' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱4,500' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+      <(FRAME) id=3:113 name='Grid Row 2'>
+        <(INSTANCE) id=3:114 name='Product Card'>
+          <(FRAME) id=I3:114;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Bed Frame' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱8,000' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+        <(INSTANCE) id=3:121 name='Product Card'>
+          <(FRAME) id=I3:121;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Coffee Table' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱3,500' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+        <(INSTANCE) id=3:128 name='Product Card'>
+          <(FRAME) id=I3:128;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Bookshelf' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱4,000' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+        <(INSTANCE) id=3:135 name='Product Card'>
+          <(FRAME) id=I3:135;1:46 name='Card Body'>
+            [Wooden Dining Table] 'Wooden Bench' (Poppins 600 18.0px)
+            [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+            [₱5,000] '₱3,000' (Poppins 600 16.0px)
+            [View Details →] 'View Details →' (Poppins 500 14.0px)
+===== 3:142 12 Product Details
+<(FRAME) id=3:142 name='12 Product Details'>
+  <(INSTANCE) id=3:143 name='Navbar'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 24.0px)
+    <(FRAME) id=I3:143;1:54 name='Nav Links'>
+      [Home] 'Home' (Poppins 500 16.0px)
+      [Furniture] 'Furniture' (Poppins 500 16.0px)
+      [Custom Order] 'Custom Order' (Poppins 500 16.0px)
+      [My Orders] 'My Orders' (Poppins 500 16.0px)
+    <(FRAME) id=I3:143;1:59 name='Right Group'>
+  <(FRAME) id=3:152 name='Details Body'>
+    <(FRAME) id=3:154 name='Details Right'>
+      [Wooden Dining Table] 'Wooden Dining Table' (Poppins 700 32.0px)
+      [₱5,000] '₱5,000' (Poppins 600 24.0px)
+      [Description] 'Description' (Poppins 600 16.0px)
+      [A handcrafted wooden dining table designed for everyday use and durability.] 'A handcrafted wooden dining table designed for everyday use and durability.' (Poppins 400 16.0px)
+      [Material: Solid Wood Size: 4 × 6 ft Availability: Available] 'Material: Solid Wood \n Size: 4 × 6 ft \n Availability: Available' (Poppins 400 14.0px)
+      <(FRAME) id=3:160 name='Quantity Selector'>
+        [−] '−' (Poppins 500 16.0px)
+        [1] '1' (Poppins 500 16.0px)
+        [+] '+' (Poppins 500 16.0px)
+      <(FRAME) id=3:164 name='Action Buttons'>
+        <(INSTANCE) id=3:165 name='Button'>
+          [Button] 'ORDER NOW' (Poppins 600 16.0px)
+        <(INSTANCE) id=3:167 name='Button'>
+          [Button] 'CUSTOMIZE' (Poppins 600 16.0px)
+  <(FRAME) id=29:401 name='Frame 2'>
+    <(INSTANCE) id=27:189 name='Product Card'>
+      <(FRAME) id=I27:189;1:46 name='Card Body'>
+        [Wooden Dining Table] 'Wooden Dining Table' (Poppins 600 18.0px)
+        [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+        [₱5,000] '₱5,000' (Poppins 600 16.0px)
+        [View Details →] 'View Details →' (Poppins 500 14.0px)
+    <(INSTANCE) id=27:196 name='Product Card'>
+      <(FRAME) id=I27:196;1:46 name='Card Body'>
+        [Wooden Dining Table] 'Wooden Dining Table' (Poppins 600 18.0px)
+        [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+        [₱5,000] '₱5,000' (Poppins 600 16.0px)
+        [View Details →] 'View Details →' (Poppins 500 14.0px)
+    <(INSTANCE) id=27:203 name='Product Card'>
+      <(FRAME) id=I27:203;1:46 name='Card Body'>
+        [Wooden Dining Table] 'Wooden Dining Table' (Poppins 600 18.0px)
+        [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+        [₱5,000] '₱5,000' (Poppins 600 16.0px)
+        [View Details →] 'View Details →' (Poppins 500 14.0px)
+    <(INSTANCE) id=29:402 name='Product Card'>
+      <(FRAME) id=I29:402;1:46 name='Card Body'>
+        [Wooden Dining Table] 'Wooden Dining Table' (Poppins 600 18.0px)
+        [Solid wood furniture] 'Solid wood furniture' (Poppins 400 14.0px)
+        [₱5,000] '₱5,000' (Poppins 600 16.0px)
+        [View Details →] 'View Details →' (Poppins 500 14.0px)
+===== 8:147 13 Custom Orders
+<(FRAME) id=8:147 name='13 Custom Orders'>
+  <(INSTANCE) id=8:149 name='Navbar'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 24.0px)
+    <(FRAME) id=I8:149;1:54 name='Nav Links'>
+      [Home] 'Home' (Poppins 500 16.0px)
+      [Furniture] 'Furniture' (Poppins 500 16.0px)
+      [Custom Order] 'Custom Order' (Poppins 500 16.0px)
+      [My Orders] 'My Orders' (Poppins 500 16.0px)
+    <(FRAME) id=I8:149;1:59 name='Right Group'>
+  <(FRAME) id=8:161 name='Details Center'>
+    [Create Your Custom Furniture] 'Create Your Custom Furniture' (Inter 700 40.0px)
+    [Tell us what you need and we'll help bring your idea to life.] 'Tell us what you need and we'll help bring your idea to life.' (Inter 700 18.0px)
+    <(FRAME) id=10:181 name='Form Card'>
+      <(INSTANCE) id=10:168 name='Input'>
+        [Placeholder text] 'Placeholder text' (Poppins 400 14.0px)
+      <(INSTANCE) id=10:170 name='Input'>
+        [Placeholder text] 'Placeholder text' (Poppins 400 14.0px)
+      <(INSTANCE) id=10:172 name='Input'>
+        [Placeholder text] 'Placeholder text' (Poppins 400 14.0px)
+      <(INSTANCE) id=10:174 name='Input'>
+        [Placeholder text] 'Placeholder text' (Poppins 400 14.0px)
+      <(INSTANCE) id=10:176 name='Input'>
+        [Placeholder text] 'Placeholder text' (Poppins 400 14.0px)
+      <(INSTANCE) id=10:178 name='Input'>
+        [Placeholder text] 'Placeholder text' (Poppins 400 14.0px)
+      [Wood Type] 'Wood Type' (Inter 700 24.0px)
+      [Furniture Type] 'Furniture Type' (Inter 700 24.0px)
+      [Length] 'Length' (Inter 700 24.0px)
+      [Height] 'Height' (Inter 700 24.0px)
+      [Quantity] 'Quantity' (Inter 700 24.0px)
+      [Width] 'Width' (Inter 700 24.0px)
+      [Describe your preferred design, color, style, or other requests...] 'Describe your preferred design, color, style, or other requests...' (Inter 700 16.0px)
+      [+ Upload Reference Image.] '+ Upload Reference Image.' (Inter 700 24.0px)
+      <(INSTANCE) id=11:133 name='Button'>
+        [Button] 'SUBMIT CUSTOM ORDER.' (Poppins 600 16.0px)
+      [Wooden Dining Table] 'Wooden Dining Table' (Poppins 700 32.0px)
+      [Description] 'Description' (Poppins 600 16.0px)
+      [A handcrafted wooden dining table designed for everyday use and durability.] 'A handcrafted wooden dining table designed for everyday use and durability.' (Poppins 400 16.0px)
+      [Material: Solid Wood Size: 4 × 6 ft Availability: Available] 'Material: Solid Wood \n Size: 4 × 6 ft \n Availability: Available' (Poppins 400 14.0px)
+===== 13:136 14 Order Confirmation
+<(FRAME) id=13:136 name='14 Order Confirmation'>
+  <(FRAME) id=13:155 name='Details Center'>
+    [ORDER SUBMITTED] 'ORDER SUBMITTED' (Poppins 700 32.0px)
+    [Your custom furniture request has been successfully submitted.] 'Your custom furniture request has been successfully submitted.' (Poppins 600 32.0px)
+    [Order #: WW-0001 Furniture: Custom Dining Table Status: Pending Estimated Response: 1–3 days] 'Order #: WW-0001 \n Furniture: Custom Dining Table \n Status: Pending \n Estimated Response: 1–3 days' (Poppins 600 32.0px)
+    <(INSTANCE) id=13:160 name='Button'>
+      [Button] 'BACK TO HOME' (Poppins 600 16.0px)
+    <(INSTANCE) id=13:158 name='Button'>
+      [Button] 'VIEW MY ORDERS' (Poppins 600 16.0px)
+  <(INSTANCE) id=13:147 name='Profile Icon'>
+  <(INSTANCE) id=13:138 name='Navbar'>
+    [WOOD WORKS] 'WOOD WORKS' (Poppins 700 24.0px)
+    <(FRAME) id=I13:138;1:54 name='Nav Links'>
+      [Home] 'Home' (Poppins 500 16.0px)
+      [Furniture] 'Furniture' (Poppins 500 16.0px)
+      [Custom Order] 'Custom Order' (Poppins 500 16.0px)
+      [My Orders] 'My Orders' (Poppins 500 16.0px)
+    <(FRAME) id=I13:138;1:59 name='Right Group'>

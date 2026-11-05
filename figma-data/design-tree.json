@@ -1,0 +1,848 @@
+﻿[
+    {
+        "id":  "1:31",
+        "name":  "Button",
+        "type":  "COMPONENT_SET",
+        "radius":  5.0
+    },
+    {
+        "id":  "1:29",
+        "name":  "Style=Filled",
+        "type":  "COMPONENT",
+        "fills":  "rgb(62 $g $b)",
+        "radius":  8.0
+    },
+    {
+        "id":  "1:26",
+        "name":  "Button",
+        "type":  "TEXT",
+        "text_":  "Button",
+        "fills":  "rgb(255 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:30",
+        "name":  "Style=Outline",
+        "type":  "COMPONENT",
+        "strokes":  "rgb(62 $g $b)",
+        "strokeWeight":  1.50,
+        "radius":  8.0
+    },
+    {
+        "id":  "1:28",
+        "name":  "Button",
+        "type":  "TEXT",
+        "text_":  "Button",
+        "fills":  "rgb(62 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:34",
+        "name":  "Input",
+        "type":  "COMPONENT",
+        "fills":  "rgb(255 $g $b)",
+        "strokes":  "rgb(216 $g $b)",
+        "strokeWeight":  1.0,
+        "radius":  8.0,
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0
+    },
+    {
+        "id":  "1:33",
+        "name":  "Placeholder text",
+        "type":  "TEXT",
+        "text_":  "Placeholder text",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:41",
+        "name":  "Category Button",
+        "type":  "COMPONENT_SET",
+        "radius":  5.0
+    },
+    {
+        "id":  "1:39",
+        "name":  "State=Selected",
+        "type":  "COMPONENT",
+        "fills":  "rgb(62 $g $b)",
+        "radius":  20.0,
+        "paddingLeft":  20.0,
+        "paddingRight":  20.0
+    },
+    {
+        "id":  "1:36",
+        "name":  "Category",
+        "type":  "TEXT",
+        "text_":  "Category",
+        "fills":  "rgb(255 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:40",
+        "name":  "State=Default",
+        "type":  "COMPONENT",
+        "fills":  "rgb(255 $g $b)",
+        "strokes":  "rgb(216 $g $b)",
+        "strokeWeight":  1.0,
+        "radius":  20.0,
+        "paddingLeft":  20.0,
+        "paddingRight":  20.0
+    },
+    {
+        "id":  "1:38",
+        "name":  "Category",
+        "type":  "TEXT",
+        "text_":  "Category",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:43",
+        "name":  "Profile Icon",
+        "type":  "COMPONENT",
+        "fills":  "rgb(255 $g $b)"
+    },
+    {
+        "id":  "1:42",
+        "name":  "Profile Icon",
+        "type":  "ELLIPSE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "1:51",
+        "name":  "Product Card",
+        "type":  "COMPONENT",
+        "fills":  "rgb(255 $g $b)",
+        "radius":  12.0,
+        "paddingBottom":  16.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "1:45",
+        "name":  "Product Image",
+        "type":  "RECTANGLE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "1:46",
+        "name":  "Card Body",
+        "type":  "FRAME",
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0,
+        "paddingTop":  12.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "1:47",
+        "name":  "Wooden Dining Table",
+        "type":  "TEXT",
+        "text_":  "Wooden Dining Table",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 18.0px () lh=27.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:48",
+        "name":  "Solid wood furniture",
+        "type":  "TEXT",
+        "text_":  "Solid wood furniture",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:49",
+        "name":  "₱5,000",
+        "type":  "TEXT",
+        "text_":  "₱5,000",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:50",
+        "name":  "View Details →",
+        "type":  "TEXT",
+        "text_":  "View Details →",
+        "fills":  "rgb(121 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:61",
+        "name":  "Navbar",
+        "type":  "COMPONENT",
+        "fills":  "rgb(255 $g $b)",
+        "paddingLeft":  80.0,
+        "paddingRight":  80.0
+    },
+    {
+        "id":  "1:53",
+        "name":  "WOOD WORKS",
+        "type":  "TEXT",
+        "text_":  "WOOD WORKS",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 700 / 24.0px () lh=36.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:54",
+        "name":  "Nav Links",
+        "type":  "FRAME",
+        "gap":  32.0
+    },
+    {
+        "id":  "1:55",
+        "name":  "Home",
+        "type":  "TEXT",
+        "text_":  "Home",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:56",
+        "name":  "Furniture",
+        "type":  "TEXT",
+        "text_":  "Furniture",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:57",
+        "name":  "Custom Order",
+        "type":  "TEXT",
+        "text_":  "Custom Order",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:58",
+        "name":  "My Orders",
+        "type":  "TEXT",
+        "text_":  "My Orders",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "1:59",
+        "name":  "Right Group",
+        "type":  "FRAME"
+    },
+    {
+        "id":  "1:60",
+        "name":  "Ellipse",
+        "type":  "ELLIPSE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "2:2",
+        "name":  "01 Login",
+        "type":  "FRAME"
+    },
+    {
+        "id":  "2:3",
+        "name":  "Left Panel",
+        "type":  "FRAME",
+        "fills":  "rgb(121 $g $b)",
+        "gap":  8.0
+    },
+    {
+        "id":  "2:4",
+        "name":  "WOOD WORKS",
+        "type":  "TEXT",
+        "text_":  "WOOD WORKS",
+        "fills":  "rgb(255 $g $b)",
+        "font":  "Poppins 700 / 32.0px () lh=48.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:5",
+        "name":  "Furniture \u0026 Custom Woodworks",
+        "type":  "TEXT",
+        "text_":  "Furniture \u0026 Custom Woodworks",
+        "fills":  "rgb(255 $g $b)",
+        "font":  "Poppins 400 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:6",
+        "name":  "Right Panel",
+        "type":  "FRAME",
+        "fills":  "rgb(247 $g $b)"
+    },
+    {
+        "id":  "2:7",
+        "name":  "Login Card",
+        "type":  "FRAME",
+        "fills":  "rgb(255 $g $b)",
+        "radius":  12.0,
+        "paddingLeft":  40.0,
+        "paddingRight":  40.0,
+        "paddingTop":  40.0,
+        "paddingBottom":  40.0,
+        "gap":  16.0
+    },
+    {
+        "id":  "2:8",
+        "name":  "Welcome Back",
+        "type":  "TEXT",
+        "text_":  "Welcome Back",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 32.0px () lh=48.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:9",
+        "name":  "Sign in to continue to Wood Works.",
+        "type":  "TEXT",
+        "text_":  "Sign in to continue to Wood Works.",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:10",
+        "name":  "Email Address",
+        "type":  "TEXT",
+        "text_":  "Email Address",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:11",
+        "name":  "Input",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "strokes":  "rgb(216 $g $b)",
+        "strokeWeight":  1.0,
+        "radius":  8.0,
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0
+    },
+    {
+        "id":  "I2:11;1:33",
+        "name":  "Placeholder text",
+        "type":  "TEXT",
+        "text_":  "Enter your email",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:13",
+        "name":  "Password",
+        "type":  "TEXT",
+        "text_":  "Password",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:14",
+        "name":  "Input",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "strokes":  "rgb(216 $g $b)",
+        "strokeWeight":  1.0,
+        "radius":  8.0,
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0
+    },
+    {
+        "id":  "I2:14;1:33",
+        "name":  "Placeholder text",
+        "type":  "TEXT",
+        "text_":  "Enter your password",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:16",
+        "name":  "Remember Row",
+        "type":  "FRAME"
+    },
+    {
+        "id":  "2:17",
+        "name":  "☐ Remember me",
+        "type":  "TEXT",
+        "text_":  "☐ Remember me",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:18",
+        "name":  "Forgot Password?",
+        "type":  "TEXT",
+        "text_":  "Forgot Password?",
+        "fills":  "rgb(121 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:19",
+        "name":  "Button",
+        "type":  "INSTANCE",
+        "fills":  "rgb(62 $g $b)",
+        "radius":  8.0
+    },
+    {
+        "id":  "I2:19;1:26",
+        "name":  "Button",
+        "type":  "TEXT",
+        "text_":  "LOG IN",
+        "fills":  "rgb(255 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "2:21",
+        "name":  "Don\u0027t have an account? Sign Up",
+        "type":  "TEXT",
+        "text_":  "Don\u0027t have an account? Sign Up",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:5",
+        "name":  "10 Home",
+        "type":  "FRAME",
+        "fills":  "rgb(247 $g $b)"
+    },
+    {
+        "id":  "3:6",
+        "name":  "Navbar",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "paddingLeft":  80.0,
+        "paddingRight":  80.0
+    },
+    {
+        "id":  "I3:6;1:53",
+        "name":  "WOOD WORKS",
+        "type":  "TEXT",
+        "text_":  "WOOD WORKS",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 700 / 24.0px () lh=36.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:6;1:54",
+        "name":  "Nav Links",
+        "type":  "FRAME",
+        "gap":  32.0
+    },
+    {
+        "id":  "I3:6;1:55",
+        "name":  "Home",
+        "type":  "TEXT",
+        "text_":  "Home",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:6;1:56",
+        "name":  "Furniture",
+        "type":  "TEXT",
+        "text_":  "Furniture",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:6;1:57",
+        "name":  "Custom Order",
+        "type":  "TEXT",
+        "text_":  "Custom Order",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:6;1:58",
+        "name":  "My Orders",
+        "type":  "TEXT",
+        "text_":  "My Orders",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 500 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:6;1:59",
+        "name":  "Right Group",
+        "type":  "FRAME"
+    },
+    {
+        "id":  "I3:6;1:60",
+        "name":  "Ellipse",
+        "type":  "ELLIPSE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "3:15",
+        "name":  "Hero",
+        "type":  "FRAME",
+        "fills":  "rgb(247 $g $b)",
+        "paddingLeft":  80.0,
+        "paddingRight":  80.0
+    },
+    {
+        "id":  "3:16",
+        "name":  "Hero Left",
+        "type":  "FRAME",
+        "gap":  16.0
+    },
+    {
+        "id":  "3:17",
+        "name":  "Crafted With Wood, Built With Purpose.",
+        "type":  "TEXT",
+        "text_":  "Crafted With Wood,\nBuilt With Purpose.",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 700 / 48.0px () lh=58.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:18",
+        "name":  "Explore handcrafted furniture made for your home and space.",
+        "type":  "TEXT",
+        "text_":  "Explore handcrafted furniture made for your home and space.",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:19",
+        "name":  "Hero Buttons",
+        "type":  "FRAME",
+        "gap":  16.0
+    },
+    {
+        "id":  "3:20",
+        "name":  "Button",
+        "type":  "INSTANCE",
+        "fills":  "rgb(62 $g $b)",
+        "radius":  8.0
+    },
+    {
+        "id":  "I3:20;1:26",
+        "name":  "Button",
+        "type":  "TEXT",
+        "text_":  "BROWSE FURNITURE",
+        "fills":  "rgb(255 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:22",
+        "name":  "Button",
+        "type":  "INSTANCE",
+        "strokes":  "rgb(62 $g $b)",
+        "strokeWeight":  1.50,
+        "radius":  8.0
+    },
+    {
+        "id":  "I3:22;1:28",
+        "name":  "Button",
+        "type":  "TEXT",
+        "text_":  "CUSTOM ORDER",
+        "fills":  "rgb(62 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:24",
+        "name":  "Hero Image",
+        "type":  "RECTANGLE",
+        "fills":  "rgb(121 $g $b)",
+        "radius":  12.0
+    },
+    {
+        "id":  "3:25",
+        "name":  "Featured Furniture Section",
+        "type":  "FRAME",
+        "fills":  "rgb(247 $g $b)",
+        "paddingLeft":  80.0,
+        "paddingRight":  80.0,
+        "paddingTop":  64.0,
+        "paddingBottom":  64.0,
+        "gap":  24.0
+    },
+    {
+        "id":  "3:26",
+        "name":  "Featured Furniture",
+        "type":  "TEXT",
+        "text_":  "Featured Furniture",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 32.0px () lh=48.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:27",
+        "name":  "Explore some of our available furniture.",
+        "type":  "TEXT",
+        "text_":  "Explore some of our available furniture.",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:28",
+        "name":  "Cards Row",
+        "type":  "FRAME",
+        "gap":  24.0
+    },
+    {
+        "id":  "3:29",
+        "name":  "Product Card",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "radius":  12.0,
+        "paddingBottom":  16.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:29;1:45",
+        "name":  "Product Image",
+        "type":  "RECTANGLE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "I3:29;1:46",
+        "name":  "Card Body",
+        "type":  "FRAME",
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0,
+        "paddingTop":  12.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:29;1:47",
+        "name":  "Wooden Dining Table",
+        "type":  "TEXT",
+        "text_":  "Wooden Dining Table",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 18.0px () lh=27.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:29;1:48",
+        "name":  "Solid wood furniture",
+        "type":  "TEXT",
+        "text_":  "Solid wood furniture",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:29;1:49",
+        "name":  "₱5,000",
+        "type":  "TEXT",
+        "text_":  "₱5,000",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:29;1:50",
+        "name":  "View Details →",
+        "type":  "TEXT",
+        "text_":  "View Details →",
+        "fills":  "rgb(121 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:36",
+        "name":  "Product Card",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "radius":  12.0,
+        "paddingBottom":  16.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:36;1:45",
+        "name":  "Product Image",
+        "type":  "RECTANGLE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "I3:36;1:46",
+        "name":  "Card Body",
+        "type":  "FRAME",
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0,
+        "paddingTop":  12.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:36;1:47",
+        "name":  "Wooden Dining Table",
+        "type":  "TEXT",
+        "text_":  "Classic Wooden Chair",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 18.0px () lh=27.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:36;1:48",
+        "name":  "Solid wood furniture",
+        "type":  "TEXT",
+        "text_":  "Solid wood furniture",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:36;1:49",
+        "name":  "₱5,000",
+        "type":  "TEXT",
+        "text_":  "₱2,500",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:36;1:50",
+        "name":  "View Details →",
+        "type":  "TEXT",
+        "text_":  "View Details →",
+        "fills":  "rgb(121 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:43",
+        "name":  "Product Card",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "radius":  12.0,
+        "paddingBottom":  16.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:43;1:45",
+        "name":  "Product Image",
+        "type":  "RECTANGLE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "I3:43;1:46",
+        "name":  "Card Body",
+        "type":  "FRAME",
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0,
+        "paddingTop":  12.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:43;1:47",
+        "name":  "Wooden Dining Table",
+        "type":  "TEXT",
+        "text_":  "Wooden Cabinet",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 18.0px () lh=27.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:43;1:48",
+        "name":  "Solid wood furniture",
+        "type":  "TEXT",
+        "text_":  "Solid wood furniture",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:43;1:49",
+        "name":  "₱5,000",
+        "type":  "TEXT",
+        "text_":  "₱7,000",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:43;1:50",
+        "name":  "View Details →",
+        "type":  "TEXT",
+        "text_":  "View Details →",
+        "fills":  "rgb(121 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "3:50",
+        "name":  "Product Card",
+        "type":  "INSTANCE",
+        "fills":  "rgb(255 $g $b)",
+        "radius":  12.0,
+        "paddingBottom":  16.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:50;1:45",
+        "name":  "Product Image",
+        "type":  "RECTANGLE",
+        "fills":  "rgb(161 $g $b)"
+    },
+    {
+        "id":  "I3:50;1:46",
+        "name":  "Card Body",
+        "type":  "FRAME",
+        "paddingLeft":  16.0,
+        "paddingRight":  16.0,
+        "paddingTop":  12.0,
+        "gap":  4.0
+    },
+    {
+        "id":  "I3:50;1:47",
+        "name":  "Wooden Dining Table",
+        "type":  "TEXT",
+        "text_":  "Study Table",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 18.0px () lh=27.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:50;1:48",
+        "name":  "Solid wood furniture",
+        "type":  "TEXT",
+        "text_":  "Solid wood furniture",
+        "fills":  "rgb(117 $g $b)",
+        "font":  "Poppins 400 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:50;1:49",
+        "name":  "₱5,000",
+        "type":  "TEXT",
+        "text_":  "₱4,500",
+        "fills":  "rgb(43 $g $b)",
+        "font":  "Poppins 600 / 16.0px () lh=24.0",
+        "letterSpacing":  0.0
+    },
+    {
+        "id":  "I3:50;1:50",
+        "name":  "View Details →",
+        "type":  "TEXT",
+        "text_":  "View Details →",
+        "fills":  "rgb(121 $g $b)",
+        "font":  "Poppins 500 / 14.0px () lh=21.0",
+        "letterSpacing":  0.0
+    }
+]
