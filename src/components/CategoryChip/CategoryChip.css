@@ -1,7 +1,9 @@
 .chip {
+  display: inline-flex;
+  align-items: center;
   border-radius: var(--radius-chip);
   padding: 0 var(--gap-lg); /* 20px inline per Figma node data */
-  height: var(--lh-21); /* chips hug the 21px line of their text */
+  height: var(--size-chip-h);
   font-family: var(--font-poppins);
   font-size: var(--fs-14);
   line-height: var(--lh-21);

@@ -46,6 +46,7 @@
   --gap-lg: 24px;
   --gap-xl: 32px;
   --size-btn-h: 48px;
+  --size-chip-h: 40px;  /* category chip height (Figma set 257x40) */
   --size-nav-h: 80px;
   --size-icon: 40px;     /* profile icon */
 
