@@ -22,6 +22,14 @@
   color: var(--color-text-muted);
 }
 
+/* Free-standing group label (screen 04's "OTP" above the tiles, 500/14). */
+.auth-form__label {
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-500);
+  color: var(--color-text);
+}
+
 .auth-form__row {
   display: flex;
   align-items: center;
