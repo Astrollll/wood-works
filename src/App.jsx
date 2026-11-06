@@ -3,6 +3,8 @@ import './App.css'
 import LoginPage from './pages/LoginPage/LoginPage'
 import SignupPage from './pages/SignupPage/SignupPage'
 import SignupSuccessPage from './pages/SignupSuccessPage/SignupSuccessPage'
+import HomePage from './pages/HomePage/HomePage'
+import CatalogPage from './pages/CatalogPage/CatalogPage'
 import SendOtpPage from './pages/SendOtpPage/SendOtpPage'
 import OtpSentSuccessPage from './pages/OtpSentSuccessPage/OtpSentSuccessPage'
 import VerifyOtpPage from './pages/VerifyOtpPage/VerifyOtpPage'
@@ -24,6 +26,8 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signup-success" element={<SignupSuccessPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/send-otp" element={<SendOtpPage />} />
         <Route path="/otp-sent-success" element={<OtpSentSuccessPage />} />
         <Route path="/verify-otp" element={<VerifyOtpPage />} />

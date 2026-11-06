@@ -1,0 +1,36 @@
+/* Screen 11 — Catalog. Same 64/80 rhythm; grid gap 24 per plan. */
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--section-pad-y) var(--page-gutter);
+}
+
+.catalog__title {
+  font-size: var(--fs-40);
+  line-height: var(--lh-48);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+}
+
+.catalog__sub {
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}
+
+.catalog__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  margin-top: var(--gap-lg);
+}
+
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-lg);
+  margin-top: var(--gap-md);
+}

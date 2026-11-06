@@ -42,6 +42,7 @@
   /* Layout */
   --page-gutter: 80px;   /* navbar + hero + section horizontal padding */
   --section-pad-y: 64px; /* section vertical rhythm */
+  --size-hero-copy: 560px; /* hero copy column cap (desktop 1440 composition) */
   --gap-xs: 4px;
   --gap-sm: 8px;
   --gap-md: 16px;
