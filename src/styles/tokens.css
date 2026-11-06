@@ -38,6 +38,14 @@
   --radius-otp: 10px;   /* OTP tiles */
   --size-otp: 44px;     /* OTP tile side (Figma node data) */
   --gap-otp: 11px;      /* OTP tile gap (Figma group measure) */
+  --size-cta-w: 220px;  /* ORDER NOW / SUBMIT / confirmation buttons width (Figma) */
+  --size-form-card-w: 1106px;  /* screen 13 form card width (Figma node data) */
+  --size-form-field-w: 420px;  /* screen 13 field width (Figma node data) */
+  --size-notes-w: 860px;       /* screen 13 textarea width (Figma node data) */
+  --size-notes-h: 100px;       /* screen 13 textarea height (Figma node data) */
+  --size-panel-w: 645px;       /* screen 14 summary panel width (Figma node data) */
+  --size-panel-h: 293px;       /* screen 14 summary panel height (Figma node data) */
+  --color-form-stroke: #000000; /* screen 13 form card 1px black stroke (Figma) */
 
   /* Layout */
   --page-gutter: 80px;   /* navbar + hero + section horizontal padding */

@@ -1,0 +1,22 @@
+/* My Orders stub — store design language, 64/80 rhythm. */
+
+.my-orders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--section-pad-y) var(--page-gutter);
+}
+
+.my-orders__title {
+  font-size: var(--fs-40);
+  line-height: var(--lh-48);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+}
+
+.my-orders__empty {
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}

@@ -6,6 +6,9 @@ import SignupSuccessPage from './pages/SignupSuccessPage/SignupSuccessPage'
 import HomePage from './pages/HomePage/HomePage'
 import CatalogPage from './pages/CatalogPage/CatalogPage'
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage'
+import CustomOrderPage from './pages/CustomOrderPage/CustomOrderPage'
+import OrderConfirmationPage from './pages/OrderConfirmationPage/OrderConfirmationPage'
+import MyOrdersStubPage from './pages/MyOrdersStubPage/MyOrdersStubPage'
 import SendOtpPage from './pages/SendOtpPage/SendOtpPage'
 import OtpSentSuccessPage from './pages/OtpSentSuccessPage/OtpSentSuccessPage'
 import VerifyOtpPage from './pages/VerifyOtpPage/VerifyOtpPage'
@@ -30,6 +33,9 @@ export default function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
+        <Route path="/custom-order" element={<CustomOrderPage />} />
+        <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+        <Route path="/my-orders" element={<MyOrdersStubPage />} />
         <Route path="/send-otp" element={<SendOtpPage />} />
         <Route path="/otp-sent-success" element={<OtpSentSuccessPage />} />
         <Route path="/verify-otp" element={<VerifyOtpPage />} />
