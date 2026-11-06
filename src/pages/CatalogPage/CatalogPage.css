@@ -30,7 +30,8 @@
 
 .catalog__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, var(--size-card-w));
+  justify-content: space-between;
   gap: var(--gap-lg);
   margin-top: var(--gap-md);
 }

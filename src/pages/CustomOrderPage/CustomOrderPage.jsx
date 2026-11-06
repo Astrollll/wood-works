@@ -76,14 +76,16 @@ export default function CustomOrderPage() {
               role="img"
               aria-label={`${product.name} image`}
             />
-            <h2 className="custom__summary-title">{product.name}</h2>
-            <h3 className="custom__summary-heading">Description</h3>
-            <p className="custom__summary-desc">{product.description}</p>
-            <ul className="custom__summary-details">
-              {DIMENSIONS_PLAIN.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
+            <div className="custom__summary-text">
+              <h2 className="custom__summary-title">{product.name}</h2>
+              <h3 className="custom__summary-heading">Description</h3>
+              <p className="custom__summary-desc">{product.description}</p>
+              <ul className="custom__summary-details">
+                {DIMENSIONS_PLAIN.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <form className="custom__form" onSubmit={handleSubmit} noValidate>
@@ -94,7 +96,7 @@ export default function CustomOrderPage() {
                   label={label}
                   id={id}
                   type="text"
-                  placeholder=""
+                  placeholder="Placeholder text"
                   value={values[id]}
                   onChange={setValue(id)}
                   error={errors[id]}

@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--gap-xs);
-  padding: var(--section-pad-y) var(--page-gutter);
+  padding: var(--pad-hero-y) var(--page-gutter) var(--section-pad-y);
   max-width: var(--page-width);
 }
 
@@ -15,6 +15,7 @@
   line-height: var(--lh-48);
   font-weight: var(--w-700);
   color: var(--color-text);
+  text-align: center;
 }
 
 .custom__sub {
@@ -23,6 +24,7 @@
   line-height: var(--lh-27);
   font-weight: var(--w-700);
   color: var(--color-text);
+  text-align: center;
 }
 
 .custom__card {
@@ -31,7 +33,7 @@
   background-color: var(--color-image-placeholder);
   border: 1px solid var(--color-form-stroke);
   border-radius: var(--radius-card);
-  padding: calc(var(--gap-xl) * 2);
+  padding: var(--gap-xl) var(--pad-form-card-x);
   display: flex;
   flex-direction: column;
   gap: var(--gap-lg);
@@ -40,17 +42,25 @@
 
 .custom__summary {
   display: flex;
-  flex-direction: column;
-  gap: var(--gap-sm);
-  max-width: 520px;
+  align-items: flex-start;
+  gap: var(--gap-xl);
 }
 
 .custom__summary-image {
   display: block;
-  width: 100%;
-  aspect-ratio: 416 / 265; /* Figma summary image rect */
+  width: var(--size-summary-img-w);
+  height: var(--size-summary-img-h);
+  flex: none;
   background-color: var(--color-accent);
   border-radius: var(--radius-card);
+}
+
+.custom__summary-text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-sm);
 }
 
 .custom__summary-title {
@@ -96,8 +106,10 @@
 }
 
 .custom__fields {
+  align-self: stretch;
   display: grid;
-  grid-template-columns: repeat(2, minmax(auto, var(--size-form-field-w)));
+  grid-template-columns: repeat(2, var(--size-form-field-w));
+  justify-content: space-between;
   gap: var(--gap-lg);
 }
 
@@ -108,6 +120,13 @@
   line-height: var(--lh-24);
   font-weight: var(--w-700);
   color: var(--color-surface);
+}
+
+.custom__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-md);
 }
 
 .custom__notes {
@@ -132,7 +151,7 @@
 }
 
 .custom__upload {
-  align-self: flex-start;
+  align-self: center;
   background: none;
   border: none;
   padding: 0;
@@ -142,6 +161,11 @@
   line-height: var(--lh-36);
   font-weight: var(--w-700);
   color: var(--color-link-blue);
+}
+
+.custom__submit {
+  display: flex;
+  justify-content: center;
 }
 
 .custom__submit .btn {

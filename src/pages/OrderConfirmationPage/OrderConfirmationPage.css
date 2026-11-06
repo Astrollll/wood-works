@@ -4,9 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--gap-md);
-  padding: var(--section-pad-y) var(--page-gutter);
+  gap: var(--gap-lg);
+  padding: var(--pad-confirm-y) var(--page-gutter) var(--section-pad-y);
   text-align: center;
+}
+
+/* Larger circle-to-heading gap per the Figma export (~80px pitch). */
+.confirmation .profile-icon {
+  margin-bottom: 48px;
 }
 
 .confirmation__title {
@@ -31,6 +36,8 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--gap-md);
+  text-align: left;
+  padding-inline: var(--pad-panel-x);
 }
 
 .confirmation__panel p {
@@ -41,7 +48,9 @@
 
 .confirmation__actions {
   display: flex;
-  gap: var(--gap-md);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
 }
 
 .confirmation__actions .btn {

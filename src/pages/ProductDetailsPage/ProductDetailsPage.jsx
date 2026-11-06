@@ -66,12 +66,14 @@ export default function ProductDetailsPage() {
 
           <div className="details__purchase">
             <QuantityStepper value={quantity} onChange={setQuantity} />
-            <Button variant="filled" onClick={handleOrderNow}>
-              ORDER NOW
-            </Button>
-            <Button variant="outline" onClick={() => navigate('/custom-order')}>
-              CUSTOMIZE
-            </Button>
+            <div className="details__actions">
+              <Button variant="filled" onClick={handleOrderNow}>
+                ORDER NOW
+              </Button>
+              <Button variant="outline" onClick={() => navigate('/custom-order')}>
+                CUSTOMIZE
+              </Button>
+            </div>
           </div>
         </div>
       </section>

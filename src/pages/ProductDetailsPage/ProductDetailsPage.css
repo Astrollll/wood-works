@@ -3,13 +3,15 @@
 .details {
   display: flex;
   gap: var(--gap-xl);
-  padding: var(--section-pad-y) var(--page-gutter) 0;
+  padding: var(--pad-details-y) var(--page-gutter) 0;
+  align-items: flex-start;
 }
 
 .details__image {
   display: block;
-  flex: 0 1 40%;
-  aspect-ratio: 4 / 3;
+  width: var(--size-details-img-w);
+  height: var(--size-details-img-h);
+  flex: none;
   background-color: var(--color-image-placeholder);
   border-radius: var(--radius-card);
 }
@@ -39,7 +41,7 @@
   font-size: var(--fs-16);
   line-height: var(--lh-24);
   font-weight: var(--w-600);
-  color: var(--color-text);
+  color: var(--color-surface); /* white label per Figma export */
   margin-top: var(--gap-sm);
 }
 
@@ -47,7 +49,7 @@
   font-size: var(--fs-16);
   line-height: var(--lh-24);
   font-weight: var(--w-400);
-  color: var(--color-text);
+  color: var(--color-text-muted);
 }
 
 .details__specs {
@@ -60,19 +62,31 @@
   font-size: var(--fs-14);
   line-height: var(--lh-21);
   font-weight: var(--w-400);
-  color: var(--color-text);
+  color: var(--color-text-muted);
 }
 
 .details__purchase {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--gap-md);
   margin-top: var(--gap-sm);
 }
 
+.details__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.details__actions .btn {
+  width: var(--size-cta-w);
+}
+
 .details__related {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, var(--size-card-w));
+  justify-content: space-between;
   gap: var(--gap-lg);
   padding: var(--section-pad-y) var(--page-gutter);
 }
