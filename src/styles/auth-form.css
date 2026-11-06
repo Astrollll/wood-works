@@ -1,0 +1,80 @@
+/*
+ * Shared styles for the auth-card forms (screens 01–09).
+ * Lives with the design tokens so the whole auth family stays consistent.
+ */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.auth-form__title {
+  font-size: var(--fs-32);
+  line-height: var(--lh-48);
+  font-weight: var(--w-600);
+  color: var(--color-text);
+}
+
+.auth-form__subtitle {
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}
+
+/* Free-standing group label (screen 04's "OTP" above the tiles, 500/14). */
+.auth-form__label {
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-500);
+  color: var(--color-text);
+}
+
+.auth-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-form__checkbox {
+  display: inline-flex;
+  gap: var(--gap-xs);
+  align-items: center;
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+/* The real checkbox is fine-grained a11y only; Figma shows the ☐ glyph. */
+.auth-form__checkbox input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.auth-form__link {
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-500);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.auth-form__link:hover {
+  text-decoration: underline;
+}
+
+.auth-form__footer {
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}
+
+/* Centered success-card variants (screens 06–09). */
+.auth-form--centered {
+  text-align: center;
+}

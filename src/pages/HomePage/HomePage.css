@@ -1,0 +1,76 @@
+/* Screen 10 — Home. Section paddings ride the 64/80 rhythm tokens. */
+
+.home__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  padding: var(--pad-hero-y) var(--page-gutter) var(--section-pad-y);
+}
+
+.home__hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-md);
+  max-width: var(--size-hero-copy);
+}
+
+.home__hero-title {
+  font-size: var(--fs-48);
+  line-height: var(--lh-hero);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+}
+
+.home__hero-sub {
+  max-width: var(--size-hero-sub);
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}
+
+.home__hero-actions {
+  display: flex;
+  gap: var(--gap-md);
+  margin-top: var(--gap-sm);
+}
+
+.home__hero-image {
+  display: block;
+  width: var(--size-hero-img-w);
+  aspect-ratio: var(--ratio-hero);
+  background-color: var(--color-accent);
+  border-radius: var(--radius-card);
+}
+
+.home__featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--section-pad-y) var(--page-gutter);
+}
+
+.home__section-title {
+  font-size: var(--fs-32);
+  line-height: var(--lh-36);
+  font-weight: var(--w-600);
+  color: var(--color-text);
+}
+
+.home__section-sub {
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+  margin-bottom: var(--gap-sm);
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--size-card-w));
+  justify-content: space-between;
+  gap: var(--gap-lg);
+  margin-top: var(--gap-md);
+}

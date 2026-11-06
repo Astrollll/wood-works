@@ -1,0 +1,173 @@
+/* Screen 13 — Custom Orders. Inter-led page on tokens; Figma node sizes
+   (1106 card / 420 fields / 860x100 textarea) come from tokens.css. */
+
+.custom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--pad-hero-y) var(--page-gutter) var(--section-pad-y);
+  max-width: var(--page-width);
+}
+
+.custom__title {
+  font-family: var(--font-inter);
+  font-size: var(--fs-40);
+  line-height: var(--lh-48);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.custom__sub {
+  font-family: var(--font-inter);
+  font-size: var(--fs-18);
+  line-height: var(--lh-27);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.custom__card {
+  width: var(--size-form-card-w);
+  max-width: 100%;
+  background-color: var(--color-image-placeholder);
+  border: 1px solid var(--color-form-stroke);
+  border-radius: var(--radius-card);
+  padding: var(--gap-xl) var(--pad-form-card-x);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  margin-top: var(--gap-md);
+}
+
+.custom__summary {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-xl);
+}
+
+.custom__summary-image {
+  display: block;
+  width: var(--size-summary-img-w);
+  height: var(--size-summary-img-h);
+  flex: none;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-card);
+}
+
+.custom__summary-text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-sm);
+}
+
+.custom__summary-title {
+  font-family: var(--font-poppins);
+  font-size: var(--fs-32);
+  line-height: var(--lh-36);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+  margin-top: var(--gap-sm);
+}
+
+.custom__summary-heading {
+  font-family: var(--font-poppins);
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-600);
+  color: var(--color-text);
+}
+
+.custom__summary-desc {
+  font-family: var(--font-poppins);
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-400);
+  color: var(--color-surface);
+}
+
+.custom__summary-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+.custom__summary-details li {
+  font-family: var(--font-poppins);
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-400);
+  color: var(--color-surface);
+}
+
+.custom__fields {
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, var(--size-form-field-w));
+  justify-content: space-between;
+  gap: var(--gap-lg);
+}
+
+/* Figma screen 13 overrides the standard Input label: Inter 700/24 white. */
+.custom__form .input__label {
+  font-family: var(--font-inter);
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  font-weight: var(--w-700);
+  color: var(--color-surface);
+}
+
+.custom__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.custom__notes {
+  width: var(--size-notes-w);
+  height: var(--size-notes-h);
+  border: none;
+  border-radius: 0; /* square corners per Figma */
+  background-color: var(--color-surface);
+  padding: var(--gap-md);
+  font-family: var(--font-inter);
+  font-size: var(--fs-16);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+  resize: none;
+}
+
+.custom__notes::placeholder {
+  font-family: var(--font-inter);
+  font-size: var(--fs-16);
+  font-weight: var(--w-700);
+  color: var(--color-text-muted);
+}
+
+.custom__upload {
+  align-self: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-inter);
+  font-size: var(--fs-24);
+  line-height: var(--lh-36);
+  font-weight: var(--w-700);
+  color: var(--color-link-blue);
+}
+
+.custom__submit {
+  display: flex;
+  justify-content: center;
+}
+
+.custom__submit .btn {
+  width: var(--size-cta-w);
+}

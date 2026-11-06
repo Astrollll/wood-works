@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  height: var(--size-nav-h);
+  padding: 0 var(--page-gutter);
+  background-color: var(--color-surface);
+  font-family: var(--font-poppins);
+}
+
+.navbar__logo {
+  font-size: var(--fs-24);
+  line-height: var(--lh-36);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navbar__links {
+  list-style: none;
+  display: flex;
+  gap: var(--gap-xl);
+  margin: 0 auto; /* centers the link group, per Figma composition */
+  padding: 0;
+}
+
+.navbar__link {
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-500);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  color: var(--color-accent);
+}

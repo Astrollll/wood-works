@@ -1,0 +1,80 @@
+/*
+ * Wood Works design tokens — single source of every visual value.
+ * Values transcribed verbatim from the Figma file (spec §3/§4a):
+ * docs/superpowers/specs/2026-11-05-wood-works-desktop-recreation-design.md
+ * Do not introduce raw hex/px values in component styles; add a variable here.
+ */
+:root {
+  /* Colors */
+  --color-text: #2b211e;            /* headings, body text */
+  --color-primary: #3e2723;         /* filled buttons, selected chips */
+  --color-accent: #795548;          /* auth brand panel, accent links, hero image */
+  --color-image-placeholder: #a1887f; /* product images, profile icon, card surfaces */
+  --color-bg: #f7f3ee;              /* page background */
+  --color-surface: #ffffff;         /* navbar, cards, inputs */
+  --color-text-muted: #756e6a;      /* secondary text, placeholders */
+  --color-border: #d8d0ca;          /* input borders, default chips */
+  --color-link-blue: #98ccff;       /* "+ Upload Reference Image." link */
+  --color-error: #c0392b;           /* validation error text only */
+
+  /* Fonts */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Type scale (font sizes + line heights, weight named tokens) */
+  --fs-14: 14px;  --lh-21: 21px;
+  --fs-16: 16px;  --lh-24: 24px;
+  --fs-18: 18px;  --lh-27: 27px;
+  --fs-24: 24px;
+  --fs-32: 32px;  --lh-36: 36px;
+  --fs-40: 40px;  --lh-48: 48px;
+  --fs-48: 48px;  --lh-hero: 58px;
+  --w-400: 400; --w-500: 500; --w-600: 600; --w-700: 700;
+
+  /* Radius */
+  --radius-btn: 8px;    /* buttons, inputs */
+  --radius-card: 12px;  /* cards, auth card, hero image, form card */
+  --radius-chip: 20px;  /* category chips */
+  --radius-otp: 10px;   /* OTP tiles */
+  --size-otp: 44px;     /* OTP tile side (Figma node data) */
+  --gap-otp: 11px;      /* OTP tile gap (Figma group measure) */
+  --size-cta-w: 220px;  /* ORDER NOW / SUBMIT / confirmation buttons width (Figma) */
+  --size-form-card-w: 1106px;  /* screen 13 form card width (Figma node data) */
+  --size-form-field-w: 420px;  /* screen 13 field width (Figma node data) */
+  --size-notes-w: 860px;       /* screen 13 textarea width (Figma node data) */
+  --size-notes-h: 100px;       /* screen 13 textarea height (Figma node data) */
+  --size-panel-w: 645px;       /* screen 14 summary panel width (Figma node data) */
+  --size-panel-h: 293px;       /* screen 14 summary panel height (Figma node data) */
+  --color-form-stroke: #000000; /* screen 13 form card 1px black stroke (Figma) */
+  --size-card-w: 280px;         /* product card width (Figma component set) */
+  --pad-hero-y: 40px;           /* home hero / custom page top padding (exports, QA) */
+  --size-hero-sub: 450px;       /* hero subtext wrap width (Figma 2-line wrap) */
+  --size-hero-img-w: 600px;     /* home hero image width (Figma export) */
+  --ratio-hero: 600 / 344;      /* home hero image ratio (Figma export) */
+  --pad-details-y: 48px;        /* screen 12 top padding (Figma export) */
+  --size-details-img-w: 600px;  /* screen 12 image block (Figma export) */
+  --size-details-img-h: 500px;
+  --size-summary-img-w: 416px;  /* screen 13 summary image (Figma export) */
+  --size-summary-img-h: 265px;
+  --pad-form-card-x: 120px;     /* screen 13 form card horizontal padding */
+  --pad-confirm-y: 110px;       /* screen 14 top offset (Figma export) */
+  --pad-panel-x: 68px;          /* screen 14 panel left text inset (Figma export) */
+
+  /* Layout */
+  --page-gutter: 80px;   /* navbar + hero + section horizontal padding */
+  --section-pad-y: 64px; /* section vertical rhythm */
+  --size-hero-copy: 560px; /* hero copy column cap (desktop 1440 composition) */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 32px;
+  --pad-card: 40px;  /* auth card padding (Figma node data) */
+  --size-btn-h: 48px;
+  --size-chip-h: 40px;  /* category chip height (Figma set 257x40) */
+  --size-nav-h: 80px;
+  --size-icon: 40px;     /* profile icon */
+
+  /* Design width */
+  --page-width: 1440px;
+}

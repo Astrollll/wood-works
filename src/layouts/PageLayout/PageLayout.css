@@ -1,0 +1,12 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-poppins);
+}
+
+.page__body {
+  width: 100%;
+  flex: 1;
+}
