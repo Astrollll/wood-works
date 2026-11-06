@@ -32,4 +32,17 @@ describe('ProductCard', () => {
     await user.click(screen.getByText('View Details →'))
     expect(onOpen).toHaveBeenCalledWith('wooden-dining-table')
   })
+
+  test('clicking anywhere on the card (e.g. the title) opens details (plan Task 6)', async () => {
+    const user = userEvent.setup()
+    const onOpen = vi.fn()
+    render(<ProductCard product={diningTable} onOpen={onOpen} />)
+    await user.click(screen.getByText('Wooden Dining Table'))
+    expect(onOpen).toHaveBeenCalledWith('wooden-dining-table')
+  })
+
+  test('no button is hidden behind the image role (image is a plain hotspot)', () => {
+    render(<ProductCard product={diningTable} onOpen={() => {}} />)
+    expect(screen.queryByRole('button', { name: 'Wooden Dining Table image' })).not.toBeInTheDocument()
+  })
 })

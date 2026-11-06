@@ -6,6 +6,7 @@
   border-radius: var(--radius-card);
   padding-bottom: var(--gap-md);
   overflow: hidden;
+  cursor: pointer; /* whole card is the hotspot (plan Task 6) */
 }
 
 .product-card__image {
@@ -13,9 +14,6 @@
   width: 100%;
   aspect-ratio: 280 / 204; /* full-width block; card ratio minus body */
   background-color: var(--color-image-placeholder);
-  border: none;
-  cursor: pointer;
-  padding: 0;
 }
 
 .product-card__body {

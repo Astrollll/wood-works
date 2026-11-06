@@ -6,7 +6,7 @@ A pixel-focused recreation of the **"Wood Works"** Figma design (file `l5v7uwdr8
 
 ## Tech stack
 
-- **Vite** + **React 18** (JavaScript, JSX)
+- **Vite** + **React 19** (JavaScript, JSX)
 - **React Router v7** (`react-router-dom`) — hash-free browser routing
 - **Vitest** + **Testing Library** — component and page tests (117 passing)
 - **ESLint** (flat config)
