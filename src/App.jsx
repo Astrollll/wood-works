@@ -42,6 +42,7 @@ export default function App() {
         <Route path="/otp-verified" element={<OtpVerifiedPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/reset-success" element={<ResetSuccessPage />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   )
