@@ -26,8 +26,14 @@ export default function NavBar() {
 
   async function handleLogout() {
     setOpen(false)
-    await supabase.auth.signOut()
-    navigate('/login')
+    try {
+      await supabase.auth.signOut()
+    } catch {
+      // Sign-out failures must not strand the user; route them to login
+      // either way (the provider clears the session on the state change).
+    } finally {
+      navigate('/login')
+    }
   }
 
   return (

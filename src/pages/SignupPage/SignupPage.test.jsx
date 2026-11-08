@@ -116,4 +116,21 @@ describe('SignupPage (Figma screen 02)', () => {
     expect(await screen.findByText('Password too weak')).toBeInTheDocument()
     expect(screen.queryByText('SIGNUP SUCCESS STUB')).not.toBeInTheDocument()
   })
+
+  test('a user without a session (obfuscated duplicate) shows the pinned copy and stays', async () => {
+    const user = userEvent.setup()
+    renderSignup()
+    await user.type(screen.getByPlaceholderText('Enter your email'), 'a@b.com')
+    await user.type(screen.getByLabelText('Password'), 'secret')
+    await user.type(screen.getByLabelText('Confirm Password'), 'secret')
+    signUp.mockResolvedValue({
+      data: { user: { email: 'a@b.com', identities: [] }, session: null },
+      error: null,
+    })
+    await user.click(screen.getByRole('button', { name: 'Sign Up' }))
+    expect(
+      await screen.findByText('Account already exists - try logging in.'),
+    ).toBeInTheDocument()
+    expect(screen.queryByText('SIGNUP SUCCESS STUB')).not.toBeInTheDocument()
+  })
 })

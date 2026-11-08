@@ -93,4 +93,15 @@ describe('NavBar', () => {
     expect(signOut).toHaveBeenCalled()
     expect(await screen.findByText('LOGIN STUB')).toBeInTheDocument()
   })
+
+  test('Log out still routes to /login when signOut rejects', async () => {
+    const user = userEvent.setup()
+    renderNavbarLoggedIn()
+    signOut.mockRejectedValueOnce(new Error('network down'))
+    await user.click(
+      await screen.findByRole('button', { name: 'Account options' }),
+    )
+    await user.click(await screen.findByRole('button', { name: 'Log out' }))
+    expect(await screen.findByText('LOGIN STUB')).toBeInTheDocument()
+  })
 })

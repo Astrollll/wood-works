@@ -11,7 +11,7 @@ import '../../styles/auth-form.css'
  * Figma screen 01 — Login.
  * Left: brand panel (AuthLayout). Right: "Welcome Back" card with email +
  * password, a remember row, LOG IN, and the sign-up handoff line.
- * Submits to /home in the mock (no backend).
+ * Signs in via Supabase; success navigates to /home.
  */
 export default function LoginPage() {
   const navigate = useNavigate()

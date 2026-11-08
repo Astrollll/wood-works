@@ -16,10 +16,16 @@ export function AuthProvider({ children }) {
     let mounted = true
 
     async function hydrate() {
-      const { data } = await supabase.auth.getSession()
-      if (!mounted) return
-      setUser(data.session?.user ?? null)
-      setLoading(false)
+      try {
+        const { data } = await supabase.auth.getSession()
+        if (!mounted) return
+        setUser(data.session?.user ?? null)
+      } catch {
+        // A transient hydration failure settles to the guest view; the
+        // state-change subscription and a refresh recover the session.
+      } finally {
+        if (mounted) setLoading(false)
+      }
     }
 
     hydrate()
