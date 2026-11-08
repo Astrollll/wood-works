@@ -34,3 +34,58 @@
 .navbar__link:hover {
   color: var(--color-accent);
 }
+
+/* Account popover — signed-in state. Cream card per real-auth spec §4;
+   tokens only, positioned under the profile dot at the right gutter. */
+.navbar__profile {
+  position: relative;
+}
+
+.navbar__profile-btn {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.navbar__popover {
+  position: absolute;
+  top: calc(100% + var(--gap-sm));
+  right: 0;
+  z-index: 2;
+  display: grid;
+  gap: var(--gap-sm);
+  min-width: var(--size-popover-w);
+  padding: var(--gap-lg);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+  text-align: left;
+}
+
+.navbar__popover-email {
+  margin: 0;
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.navbar__popover-logout {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-poppins);
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-500);
+  color: var(--color-text);
+  text-align: left;
+  text-decoration: underline;
+}
+
+.navbar__popover-logout:hover {
+  color: var(--color-accent);
+}

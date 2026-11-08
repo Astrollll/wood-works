@@ -47,6 +47,7 @@
   --size-panel-h: 293px;       /* screen 14 summary panel height (Figma node data) */
   --color-form-stroke: #000000; /* screen 13 form card 1px black stroke (Figma) */
   --size-card-w: 280px;         /* product card width (Figma component set) */
+  --size-popover-w: 220px;      /* account popover min width (real-auth wave 1, no Figma reference) */
   --pad-hero-y: 40px;           /* home hero / custom page top padding (exports, QA) */
   --size-hero-sub: 450px;       /* hero subtext wrap width (Figma 2-line wrap) */
   --size-hero-img-w: 600px;     /* home hero image width (Figma export) */
