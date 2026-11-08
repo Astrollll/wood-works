@@ -35,8 +35,9 @@
   color: var(--color-accent);
 }
 
-/* Account popover — signed-in state. Cream card per real-auth spec §4;
-   tokens only, positioned under the profile dot at the right gutter. */
+/* Account popover — signed-in state. White card mirroring the app's card
+   language (AuthLayout cards) with a hairline border so it separates from
+   the white navbar and cream canvas; positioned under the profile dot. */
 .navbar__profile {
   position: relative;
 }
@@ -59,8 +60,9 @@
   gap: var(--gap-sm);
   min-width: var(--size-popover-w);
   padding: var(--gap-lg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   text-align: left;
 }
 

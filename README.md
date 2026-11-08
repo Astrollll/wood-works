@@ -27,8 +27,9 @@ npm run lint       # eslint
 
 ### Supabase setup (required for auth)
 
-Real accounts run on Supabase — the app will not build without its two env
-values (they fail loudly by design):
+Real accounts run on Supabase — production and preview **builds fail loudly**
+without the two env values (guarded in `vite.config.js`), and the app throws
+at startup with the same message:
 
 1. Create a free project at [supabase.com](https://supabase.com).
 2. Auth → Providers → Email → **disable "Confirm email"** (instant signup → session).
@@ -39,7 +40,6 @@ values (they fail loudly by design):
 
 The anon key is public-safe by design (data access is protected by RLS once
 tables exist — no database tables exist in wave 1).
-```
 
 ## Screens & routes
 

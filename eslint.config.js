@@ -37,4 +37,11 @@ export default [
       globals: { ...globals.browser, ...globals.vitest },
     },
   },
+  {
+    // Build/config files run under Node, not the browser.
+    files: ['vite.config.js', 'eslint.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ]
