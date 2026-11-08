@@ -1,8 +1,24 @@
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import LoginPage from './LoginPage'
+
+const signInWithPassword = vi.hoisted(() => vi.fn())
+
+vi.mock('../../lib/supabase', () => ({
+  supabase: {
+    auth: {
+      signUp: vi.fn(),
+      signInWithPassword,
+      signOut: vi.fn(),
+      getSession: vi.fn(async () => ({ data: { session: null } })),
+      onAuthStateChange: vi.fn(() => ({
+        data: { subscription: { unsubscribe: vi.fn() } },
+      })),
+    },
+  },
+}))
 
 function renderLogin() {
   return render(
@@ -18,6 +34,10 @@ function renderLogin() {
 }
 
 describe('LoginPage (Figma screen 01)', () => {
+  beforeEach(() => {
+    signInWithPassword.mockReset()
+  })
+
   test('renders the exact Figma copy', () => {
     renderLogin()
     expect(screen.getByText('Welcome Back')).toBeInTheDocument()
@@ -63,12 +83,39 @@ describe('LoginPage (Figma screen 01)', () => {
     expect(screen.queryByText('HOME PAGE STUB')).not.toBeInTheDocument()
   })
 
-  test('valid submit navigates to /home (mock)', async () => {
+  test('valid credentials sign in and navigate to /home', async () => {
     const user = userEvent.setup()
     renderLogin()
     await user.type(screen.getByPlaceholderText('Enter your email'), 'a@b.com')
     await user.type(screen.getByPlaceholderText('Enter your password'), 'secret')
+    signInWithPassword.mockResolvedValue({
+      data: {
+        session: { user: { email: 'a@b.com' } },
+        user: null,
+      },
+      error: null,
+    })
     await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(signInWithPassword).toHaveBeenCalledWith({
+      email: 'a@b.com',
+      password: 'secret',
+    })
     expect(await screen.findByText('HOME PAGE STUB')).toBeInTheDocument()
+  })
+
+  test('bad credentials render the inline error and stay', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.type(screen.getByPlaceholderText('Enter your email'), 'a@b.com')
+    await user.type(screen.getByPlaceholderText('Enter your password'), 'secret')
+    signInWithPassword.mockResolvedValue({
+      data: {},
+      error: { message: 'Invalid login credentials' },
+    })
+    await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(
+      await screen.findByText('Invalid login credentials'),
+    ).toBeInTheDocument()
+    expect(screen.queryByText('HOME PAGE STUB')).not.toBeInTheDocument()
   })
 })

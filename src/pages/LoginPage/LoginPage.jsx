@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import AuthLayout from '../../layouts/AuthLayout/AuthLayout'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
+import { supabase } from '../../lib/supabase'
 import { isEmail, isFilled } from '../../lib/validation'
 import '../../styles/auth-form.css'
 
@@ -19,7 +20,7 @@ export default function LoginPage() {
   const [remember, setRemember] = useState(false)
   const [errors, setErrors] = useState({})
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!isFilled(email)) next.email = 'Email is required'
@@ -27,6 +28,14 @@ export default function LoginPage() {
     if (!isFilled(password)) next.password = 'Password is required'
     setErrors(next)
     if (Object.keys(next).length === 0) {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      if (error) {
+        setErrors({ ...next, password: error.message })
+        return
+      }
       navigate('/home')
     }
   }
