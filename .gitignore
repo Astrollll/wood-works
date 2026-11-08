@@ -2,5 +2,8 @@ node_modules/
 dist/
 coverage/
 .superpowers/
+.env*
+.env.*
+!.env.example
 # Local design/roadmap notes - never pushed to GitHub (user rule)
 /2026-11-06-wood-works-real-functions-roadmap.md
