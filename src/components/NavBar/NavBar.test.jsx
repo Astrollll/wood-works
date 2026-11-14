@@ -1,7 +1,28 @@
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import { AuthProvider } from '../../auth/AuthProvider'
 import NavBar from './NavBar'
+
+const signOut = vi.hoisted(() => vi.fn(async () => ({})))
+const sessionForTests = vi.hoisted(() => ({
+  data: { session: { user: { email: 'a@b.com' } } },
+}))
+
+vi.mock('../../lib/supabase', () => ({
+  supabase: {
+    auth: {
+      signUp: vi.fn(),
+      signInWithPassword: vi.fn(),
+      signOut,
+      getSession: vi.fn(async () => sessionForTests),
+      onAuthStateChange: vi.fn(() => ({
+        data: { subscription: { unsubscribe: vi.fn() } },
+      })),
+    },
+  },
+}))
 
 function renderNavbar() {
   return render(
@@ -11,7 +32,24 @@ function renderNavbar() {
   )
 }
 
+function renderNavbarLoggedIn() {
+  return render(
+    <MemoryRouter initialEntries={['/home']}>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<div>LOGIN STUB</div>} />
+          <Route path="/home" element={<NavBar />} />
+        </Routes>
+      </AuthProvider>
+    </MemoryRouter>,
+  )
+}
+
 describe('NavBar', () => {
+  beforeEach(() => {
+    signOut.mockClear()
+  })
+
   test('renders the 4 nav links with their routes', () => {
     renderNavbar()
     expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/home')
@@ -25,7 +63,7 @@ describe('NavBar', () => {
     expect(screen.getByRole('link', { name: 'WOOD WORKS' })).toHaveAttribute('href', '/home')
   })
 
-  test('renders the profile icon', () => {
+  test('logged-out profile stays an inert image', () => {
     renderNavbar()
     expect(screen.getByRole('img', { name: 'Profile' })).toBeInTheDocument()
   })
@@ -33,5 +71,37 @@ describe('NavBar', () => {
   test('is a nav landmark', () => {
     const { container } = renderNavbar()
     expect(container.querySelector('nav')).toBeInTheDocument()
+  })
+
+  test('logged-in profile becomes a button that opens the account popover', async () => {
+    const user = userEvent.setup()
+    renderNavbarLoggedIn()
+    await user.click(
+      await screen.findByRole('button', { name: 'Account options' }),
+    )
+    expect(await screen.findByText('a@b.com')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Log out' })).toBeInTheDocument()
+  })
+
+  test('Log out signs out and returns to /login', async () => {
+    const user = userEvent.setup()
+    renderNavbarLoggedIn()
+    await user.click(
+      await screen.findByRole('button', { name: 'Account options' }),
+    )
+    await user.click(await screen.findByRole('button', { name: 'Log out' }))
+    expect(signOut).toHaveBeenCalled()
+    expect(await screen.findByText('LOGIN STUB')).toBeInTheDocument()
+  })
+
+  test('Log out still routes to /login when signOut rejects', async () => {
+    const user = userEvent.setup()
+    renderNavbarLoggedIn()
+    signOut.mockRejectedValueOnce(new Error('network down'))
+    await user.click(
+      await screen.findByRole('button', { name: 'Account options' }),
+    )
+    await user.click(await screen.findByRole('button', { name: 'Log out' }))
+    expect(await screen.findByText('LOGIN STUB')).toBeInTheDocument()
   })
 })

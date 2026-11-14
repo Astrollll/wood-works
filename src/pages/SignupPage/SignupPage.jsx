@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import AuthLayout from '../../layouts/AuthLayout/AuthLayout'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
+import { supabase } from '../../lib/supabase'
 import { isEmail, isFilled, passwordsMatch } from '../../lib/validation'
 import '../../styles/auth-form.css'
 
 /**
  * Figma screen 02 — Sign Up.
  * Welcome! card with email, password, confirm password.
- * Submits to /signup-success in the mock flow (no backend).
+ * Creates the account via Supabase; success navigates to /signup-success.
  */
 export default function SignupPage() {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ export default function SignupPage() {
   const [confirm, setConfirm] = useState('')
   const [errors, setErrors] = useState({})
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!isFilled(email)) next.email = 'Email is required'
@@ -28,6 +29,19 @@ export default function SignupPage() {
     else if (!passwordsMatch(password, confirm)) next.confirm = 'Passwords do not match'
     setErrors(next)
     if (Object.keys(next).length === 0) {
+      const { error, data } = await supabase.auth.signUp({ email, password })
+      if (error) {
+        setErrors({ ...next, email: /already/i.test(error.message)
+          ? 'Account already exists - try logging in.'
+          : error.message })
+        return
+      }
+      if (!data.session) {
+        // Supabase obfuscates an already-registered email (user without a
+        // session); never present that as a successful signup.
+        setErrors({ ...next, email: 'Account already exists - try logging in.' })
+        return
+      }
       navigate('/signup-success')
     }
   }

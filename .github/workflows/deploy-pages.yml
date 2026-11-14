@@ -28,6 +28,9 @@ jobs:
       - run: npm run lint
       - name: Build for the /wood-works/ project path
         run: npm run build -- --base=/wood-works/
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       - name: SPA fallback (BrowserRouter deep links -> app shell)
         run: cp dist/index.html dist/404.html
       - uses: actions/configure-pages@v5
