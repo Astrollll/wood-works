@@ -21,7 +21,7 @@
 - **Iron law:** RED→GREEN per behavior; full suite green + lint clean before every commit; conventional ASCII commit messages; milestones pushed.
 - **Tokens-only CSS:** no raw values in component CSS; add a variable to `tokens.css` if a new value is needed.
 - **Env unchanged:** `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` only (both already in `.env.local` and Actions secrets).
-- **Migration ordering:** the table must exist **before** any code that queries it deploys (Task 1 probe, Task 6 order of operations).
+- **Migration ordering:** enforced by CI — the `migrate` job runs before `build` in the same workflow; code that queries `orders` cannot deploy before the table exists.
 
 ## Review Focus
 
@@ -35,28 +35,51 @@ The five inputs most likely to bite a person using this software, each pinned by
 
 ---
 
-### Task 1: Orders table migration
+### Task 1: Orders table migration + CI migration job
 
 **Files:**
 - Create: `supabase/migrations/0001_orders.sql`
+- Create: `supabase/config.toml`
+- Modify: `.github/workflows/deploy-pages.yml` (add `migrate` job; `build` needs it)
 
 **Interfaces:**
-- Consumes: nothing (pure SQL).
-- Produces: `public.orders` table + `public.orders_number_seq` sequence, RLS ON with insert/select-own policies. Task 2's API assumes exactly these column names.
+- Consumes: nothing (pure SQL + workflow).
+- Produces: `public.orders` table + `public.orders_number_seq` sequence, RLS ON with insert/select-own policies. Task 2's API assumes exactly these column names. Every push to `main` now shows three checks: `migrate`, `build`, `deploy`.
+- USER PREREQ: a Supabase access token (Account → Access Tokens), stored as the Actions secret `SUPABASE_ACCESS_TOKEN` before the workflow's first run.
 
 - [ ] **Step 1: Write the migration file** with the exact SQL from spec §4 (sequence, table, RLS enable, two policies, `user_id` index — verbatim, nothing added).
 
-- [ ] **Step 2: Commit**
+- [ ] **Step 2: Create `supabase/config.toml`** (`supabase init` equivalent, minimal):
 
-```bash
-git add supabase/migrations/0001_orders.sql
-git commit -m "chore: orders table migration with rls policies"
-git push origin main
+```toml
+project_id = "wood-works"
 ```
 
-- [ ] **Step 3: USER ACTION — run it in the dashboard.** Supabase dashboard → SQL Editor → paste the file's contents → Run. Confirm "Success. No rows returned."
+- [ ] **Step 3: USER ACTION — access token.** Generate at supabase.com → Account → Access Tokens → paste it in chat. Executor stores it: `gh secret set SUPABASE_ACCESS_TOKEN`.
 
-- [ ] **Step 4: Verify the table exists via the publishable key** (anon sees `200 []` under RLS; a missing table returns 404 `PGRST205`):
+- [ ] **Step 4: Add the `migrate` job** to `deploy-pages.yml` (project ref is public — hardcoded; token via secret):
+
+```yaml
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase link --project-ref fnoxvnzbdxespxsqokli
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - run: supabase db push
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+```
+
+`build` gains `needs: migrate`. Concurrency group unchanged.
+
+- [ ] **Step 5: Commit + push main** — all three checks green (`migrate` applies the migration; `supabase db push` records it in `supabase_migrations.schema_migrations` so later pushes are no-ops until a new file appears).
+
+- [ ] **Step 6: Verify the table exists via the publishable key** (anon sees `200 []` under RLS; a missing table returns 404 `PGRST205`):
 
 ```powershell
 $key = (Get-Content .env.local | Select-String 'VITE_SUPABASE_ANON_KEY').Line.Split('=')[1]
@@ -291,7 +314,7 @@ git push origin feat/orders-persistence
 **Interfaces:**
 - Consumes: everything above, deployed.
 
-- [ ] **Step 1: Prereq check (USER):** confirm Task 1's migration already ran in the dashboard (the table exists before this deploy).
+- [ ] **Step 1: Prereq check:** confirm the `migrate` check is green in the deploy run (Task 1's job ran; the table exists).
 
 - [ ] **Step 2: Gate + merge + deploy.** Full suite (148) + lint on the branch → merge `feat/orders-persistence` into `main` (`--no-ff`) → push → `gh run watch` until the Pages deploy is green.
 

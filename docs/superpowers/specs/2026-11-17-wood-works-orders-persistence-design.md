@@ -27,7 +27,7 @@ The audience is unchanged from wave 1: classmates demoing the deployed site. Eve
 
 ## 4. Data & security
 
-One migration, committed to the repo, pasted once into the Supabase dashboard SQL editor — **before any code that queries the table deploys**.
+Migrations live in the repo (`supabase/migrations/*.sql`) and are applied by CI, not by hand: the Pages workflow gains a `migrate` job (Supabase CLI `link` + `db push`, using a `SUPABASE_ACCESS_TOKEN` Actions secret) and the `build` job depends on it — so the table exists before any code that queries it deploys, and the migration shows up as a GitHub check (`migrate`) beside `build` and `deploy`. The migration is applied exactly once per file (the CLI tracks applied migrations).
 
 ```sql
 create sequence public.orders_number_seq start 1;
@@ -114,11 +114,11 @@ Iron law unchanged: RED→GREEN per behavior; whole suite green + lint before ev
   2. Refresh the confirmation → the order still renders (fallback fetch works).
   3. My Orders lists it; refresh → it survives.
   4. Account B's My Orders is empty — **RLS proven live**: B sees none of A's rows.
-  5. The migration runs **before** the code deploy, or My Orders breaks the moment the new bundle ships.
+  5. The migration job (`migrate`) gates the build job in the same workflow — code that queries the table cannot deploy before the table exists.
 
 ## 7. Implementation order
 
-1. `chore:` migration file `supabase/migrations/0001_orders.sql` committed; user runs it in the dashboard SQL editor.
+1. `chore:` migration file `supabase/migrations/0001_orders.sql` + `supabase/config.toml` committed; Pages workflow gains the `migrate` job (access token as an Actions secret); the user creates the token; CI applies the migration on push.
 2. `chore:` `orders.js` API over the seam (RED→GREEN).
 3. `feat:` real custom-order submit — success, failure, double-click guard (RED→GREEN each behavior).
 4. `feat:` confirmation fallback (RED→GREEN).
