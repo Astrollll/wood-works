@@ -81,9 +81,10 @@ Include an ID if ALL of the following hold:
 - It is `auto` (exactly one, always included) OR it is a catalog model.
 - It is not a known dead prefix: `dva/`, `cxa/`, `aug/`, `no-think/dva/`,
   and not the exact dead entry `agy/gemini-pro-agent`.
-- It is chat-capable: `output_modalities` contains `text`, or (when the field is
-  absent) `supported_endpoints` contains `chat`. Exclude IDs whose name matches
-  `embedding|image|transcribe|whisper|safeguard|audio|tts|video`.
+- It is chat-capable: if `output_modalities` is a non-empty array it must contain
+  `text`. Empty or absent modality metadata is treated as chat-capable because
+  the OmniRoute catalog frequently omits it even for working chat models.
+  Exclude non-chat IDs by name: `embedding|image|transcribe|whisper|safeguard|audio|tts|video`.
 - It is free:
   - `openrouter/` IDs: name contains `:free` or equals `openrouter/openrouter/free`.
   - all other providers: `pricing` values are all 0 / missing.

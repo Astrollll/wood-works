@@ -17,7 +17,7 @@
 - Config target: `C:\Users\ivanj\.config\opencode\opencode.jsonc`; mutate only `provider.omniroute.models`.
 - Exactly one `auto`; zero `auto/*` combos.
 - Free = `openrouter/` IDs containing `:free` or exactly `openrouter/openrouter/free`; all other providers require all `pricing` values 0/missing.
-- Exclude non-chat names matching `embedding|image|transcribe|whisper|safeguard|audio|tts|video`.
+- Chat check: non-empty `output_modalities` must contain `text`; empty/absent metadata is treated as chat (catalog often omits it). Exclude non-chat names matching `embedding|image|transcribe|whisper|safeguard|audio|tts|video`.
 - Exclude deprecated names matching `deprecat|degrad|legacy|sunset|retire`, plus `old` only as a `-`, `_`, or `/` bounded segment.
 - Exclude dead prefixes `dva/`, `cxa/`, `aug/`, `no-think/dva/`, exact `agy/gemini-pro-agent`.
 - Dedupe exact IDs case-insensitively; output sorted.
