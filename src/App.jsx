@@ -11,7 +11,7 @@ import CatalogPage from './pages/CatalogPage/CatalogPage'
 import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage'
 import CustomOrderPage from './pages/CustomOrderPage/CustomOrderPage'
 import OrderConfirmationPage from './pages/OrderConfirmationPage/OrderConfirmationPage'
-import MyOrdersStubPage from './pages/MyOrdersStubPage/MyOrdersStubPage'
+import MyOrdersPage from './pages/MyOrdersPage/MyOrdersPage'
 import SendOtpPage from './pages/SendOtpPage/SendOtpPage'
 import OtpSentSuccessPage from './pages/OtpSentSuccessPage/OtpSentSuccessPage'
 import VerifyOtpPage from './pages/VerifyOtpPage/VerifyOtpPage'
@@ -124,7 +124,7 @@ export default function App() {
             path="/my-orders"
             element={
               <ProtectedRoute>
-                <MyOrdersStubPage />
+                <MyOrdersPage />
               </ProtectedRoute>
             }
           />
