@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { AuthProvider, useAuth } from './auth/AuthProvider'
@@ -34,11 +35,25 @@ function RootRedirect() {
   return <Navigate to={user ? '/home' : '/login'} replace />
 }
 
-/** Auth pages stay unsigned-in territory: signed-in users bounce to /home. */
+/**
+ * Auth pages stay unsigned-in territory — but only for users who ARRIVE
+ * signed in. A session that appears mid-signup (supabase fires SIGNED_IN
+ * before signUp resolves) must not hijack the page's own navigation: the
+ * signup page owns its screen-06 landing, and the live nav log showed the
+ * old unguarded bounce overwriting that landing 3ms after it was pushed.
+ */
 function GuestRoute({ children }) {
   const { user, loading } = useAuth()
-  if (loading) return null
-  if (user) return <Navigate to="/home" replace />
+  // Arrival snapshot via the render-phase state-adjustment idiom (React:
+  // "adjusting state when a prop changes"): the settled value commits in
+  // the same render that first observes it, so there is no guest flash,
+  // and later session changes (mid-signup SIGNED_IN) cannot move it.
+  const [arrival, setArrival] = useState({ settled: false, signedIn: false })
+  if (!loading && !arrival.settled) {
+    setArrival({ settled: true, signedIn: Boolean(user) })
+  }
+  if (loading || !arrival.settled) return null
+  if (arrival.signedIn) return <Navigate to="/home" replace />
   return children
 }
 
