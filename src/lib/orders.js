@@ -5,14 +5,6 @@
  */
 import { supabase } from './supabase'
 
-/** @deprecated Kept only until the confirmation fallback lands; then removed. */
-export const DEFAULT_ORDER = {
-  number: 'WW-0001',
-  furniture: 'Custom Dining Table',
-  status: 'Pending',
-  eta: '1-3 days',
-}
-
 const orderCounter = { value: 0 }
 
 /**

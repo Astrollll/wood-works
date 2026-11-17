@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { insertOrder, listOrders, createOrder, DEFAULT_ORDER } from './orders'
+import { insertOrder, listOrders, createOrder } from './orders'
 
 const from = vi.hoisted(() => vi.fn())
 vi.mock('./supabase', () => ({ supabase: { from } }))
@@ -150,16 +150,5 @@ describe('createOrder — deprecated mock path for the catalog ORDER NOW button'
 
   test('eta is the exact Figma string with the ASCII hyphen', () => {
     expect(createOrder({ furniture: 'Bookshelf' }).eta).toBe('1-3 days')
-  })
-})
-
-describe('DEFAULT_ORDER — deprecated, kept until the confirmation fallback lands', () => {
-  test('matches the panel copy verbatim', () => {
-    expect(DEFAULT_ORDER).toEqual({
-      number: 'WW-0001',
-      furniture: 'Custom Dining Table',
-      status: 'Pending',
-      eta: '1-3 days',
-    })
   })
 })
