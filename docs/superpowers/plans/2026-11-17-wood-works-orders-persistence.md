@@ -47,17 +47,17 @@ The five inputs most likely to bite a person using this software, each pinned by
 - Produces: `public.orders` table + `public.orders_number_seq` sequence, RLS ON with insert/select-own policies. Task 2's API assumes exactly these column names. Every push to `main` now shows three checks: `migrate`, `build`, `deploy`.
 - USER PREREQ: a Supabase access token (Account → Access Tokens), stored as the Actions secret `SUPABASE_ACCESS_TOKEN` before the workflow's first run.
 
-- [ ] **Step 1: Write the migration file** with the exact SQL from spec §4 (sequence, table, RLS enable, two policies, `user_id` index — verbatim, nothing added).
+- [x] **Step 1: Write the migration file** with the exact SQL from spec §4 (sequence, table, RLS enable, two policies, `user_id` index — verbatim, nothing added).
 
-- [ ] **Step 2: Create `supabase/config.toml`** (`supabase init` equivalent, minimal):
+- [x] **Step 2: Create `supabase/config.toml`** (`supabase init` equivalent, minimal):
 
 ```toml
 project_id = "wood-works"
 ```
 
-- [ ] **Step 3: USER ACTION — access token.** Generate at supabase.com → Account → Access Tokens → paste it in chat. Executor stores it: `gh secret set SUPABASE_ACCESS_TOKEN`.
+- [x] **Step 3: USER ACTION — access token.** Generate at supabase.com → Account → Access Tokens → paste it in chat. Executor stores it: `gh secret set SUPABASE_ACCESS_TOKEN`.
 
-- [ ] **Step 4: Add the `migrate` job** to `deploy-pages.yml` (project ref is public — hardcoded; token via secret):
+- [x] **Step 4: Add the `migrate` job** to `deploy-pages.yml` (project ref is public — hardcoded; token via secret):
 
 ```yaml
   migrate:
@@ -77,9 +77,9 @@ project_id = "wood-works"
 
 `build` gains `needs: migrate`. Concurrency group unchanged.
 
-- [ ] **Step 5: Commit + push main** — all three checks green (`migrate` applies the migration; `supabase db push` records it in `supabase_migrations.schema_migrations` so later pushes are no-ops until a new file appears).
+- [x] **Step 5: Commit + push main** — all three checks green (`migrate` applies the migration; `supabase db push` records it in `supabase_migrations.schema_migrations` so later pushes are no-ops until a new file appears).
 
-- [ ] **Step 6: Verify the table exists via the publishable key** (anon sees `200 []` under RLS; a missing table returns 404 `PGRST205`):
+- [x] **Step 6: Verify the table exists via the publishable key** (anon sees `200 []` under RLS; a missing table returns 404 `PGRST205`):
 
 ```powershell
 $key = (Get-Content .env.local | Select-String 'VITE_SUPABASE_ANON_KEY').Line.Split('=')[1]
@@ -102,7 +102,7 @@ Expected: `200`, body `[]`.
   - `OrderRecord = { id, number, furniture, wood, status, eta, createdAt }` — the ONLY shape pages ever see (display mapping lives here; pages never see snake_case DB columns).
 - `DEFAULT_ORDER` stays exported this task (OrderConfirmationPage still imports it; Task 4 removes it). Mark it deprecated in a comment.
 
-- [ ] **Step 1: RED — rework `src/lib/orders.test.js`.** Delete the four `createOrder` tests. Mock the seam (hoisted, Vitest 5):
+- [x] **Step 1: RED — rework `src/lib/orders.test.js`.** Delete the four `createOrder` tests. Mock the seam (hoisted, Vitest 5):
 
 ```js
 import { describe, expect, test, vi, beforeEach } from 'vitest'
@@ -118,9 +118,9 @@ New tests:
 2. `listOrders resolves rows newest first as display records` — chain mock: `select().order('created_at', { ascending: false })` resolves `{ data: [DB_ROW_B, DB_ROW_A], error: null }`; assert the result is `[B, A]` display-shaped and that `order` was called with `('created_at', { ascending: false })`.
 3. `insertOrder rejects with the raw supabase error` — `single()` resolves `{ data: null, error: { message: 'insert failed' } }`; assert the promise rejects with that exact object.
 
-- [ ] **Step 2: Run to verify RED.** `npm run test -- src/lib/orders.test.js` — expect FAIL (functions missing / mock chain unused).
+- [x] **Step 2: Run to verify RED.** `npm run test -- src/lib/orders.test.js` — expect FAIL (functions missing / mock chain unused).
 
-- [ ] **Step 3: Implement.** Replace the mock factory in `src/lib/orders.js`:
+- [x] **Step 3: Implement.** Replace the mock factory in `src/lib/orders.js`:
 
 ```js
 import { supabase } from './supabase'
@@ -168,9 +168,9 @@ export async function listOrders() {
 
 Keep `DEFAULT_ORDER` (unchanged value) with a `@deprecated` comment noting Task 4 removes it.
 
-- [ ] **Step 4: Run to verify GREEN.** `npm run test -- src/lib/orders.test.js` — 3 pass + the DEFAULT test stays.
+- [x] **Step 4: Run to verify GREEN.** `npm run test -- src/lib/orders.test.js` — 3 pass + the DEFAULT test stays.
 
-- [ ] **Step 5: Gate + commit.** Full suite (expect **141**) + lint clean.
+- [x] **Step 5: Gate + commit.** Full suite (expect **141**) + lint clean.
 
 ```bash
 git add src/lib/orders.js src/lib/orders.test.js
@@ -192,9 +192,9 @@ git push origin feat/orders-persistence
 - Consumes: `insertOrder(values)` (Task 2).
 - Produces: `Button` accepts `disabled = false` and renders the attribute; CustomOrderPage navigates with `{ state: { order } }` where `order` is a Task-2 `OrderRecord`.
 
-- [ ] **Step 1: RED — Button test.** In `Button.test.jsx`: `renders with the disabled attribute when disabled` — render `<Button disabled>X</Button>`, expect `getByRole('button', { name: 'X' })` `toBeDisabled()`.
+- [x] **Step 1: RED — Button test.** In `Button.test.jsx`: `renders with the disabled attribute when disabled` — render `<Button disabled>X</Button>`, expect `getByRole('button', { name: 'X' })` `toBeDisabled()`.
 
-- [ ] **Step 2: RED — CustomOrderPage tests.** Add at the top (above the existing helpers):
+- [x] **Step 2: RED — CustomOrderPage tests.** Add at the top (above the existing helpers):
 
 ```js
 const insertOrder = vi.hoisted(() => vi.fn())
@@ -210,18 +210,18 @@ vi.mock('../../lib/orders', () => ({ insertOrder }))
 
 Existing tests untouched: exact copy, six-fields-exist, empty submit (6 alerts).
 
-- [ ] **Step 3: Run to verify RED** (`npm run test -- src/components/Button src/pages/CustomOrderPage`) — expect the 4 new/reworked tests to fail (no `disabled` support; page still calls `createOrder`).
+- [x] **Step 3: Run to verify RED** (`npm run test -- src/components/Button src/pages/CustomOrderPage`) — expect the 4 new/reworked tests to fail (no `disabled` support; page still calls `createOrder`).
 
-- [ ] **Step 4: Implement.**
+- [x] **Step 4: Implement.**
   - `Button.jsx`: add `disabled = false` to the destructure; render `disabled={disabled}` on the `<button>`.
   - `CustomOrderPage.jsx`: import `insertOrder` (drop `createOrder`); add `const [submitting, setSubmitting] = useState(false)` and `const [formError, setFormError] = useState('')`; `handleSubmit`: validation unchanged → `setSubmitting(true)` → `try { const order = await insertOrder(values); navigate('/order-confirmation', { state: { order } }) } catch (error) { setFormError(error.message) } finally { setSubmitting(false) }`. Clear `formError` at submit start.
   - Submit button: `disabled={submitting}`.
   - Form-level error line under the fields: `<p className="custom__form-error" role="alert">{formError}</p>` rendered only when `formError` is set. CSS: `.custom__form-error { color: var(--color-error); margin: 0; }` (token only).
   - The `+ Upload Reference Image.` button stays untouched (D2).
 
-- [ ] **Step 5: Run to verify GREEN** — all CustomOrderPage tests + Button tests pass.
+- [x] **Step 5: Run to verify GREEN** — all CustomOrderPage tests + Button tests pass.
 
-- [ ] **Step 6: Gate + commit.** Full suite (expect **145**) + lint clean.
+- [x] **Step 6: Gate + commit.** Full suite (expect **145**) + lint clean.
 
 ```bash
 git add src/components/Button src/pages/CustomOrderPage
@@ -241,19 +241,19 @@ git push origin feat/orders-persistence
 - Consumes: `listOrders()` (Task 2).
 - Produces: confirmation renders a Task-2 `OrderRecord` from router state OR from the fallback fetch.
 
-- [ ] **Step 1: RED — rework + new tests.** Mock like Task 3 (`vi.mock('../../lib/orders', () => ({ listOrders }))`, hoisted; default: `listOrders.mockResolvedValue([])` in `beforeEach`).
+- [x] **Step 1: RED — rework + new tests.** Mock like Task 3 (`vi.mock('../../lib/orders', () => ({ listOrders }))`, hoisted; default: `listOrders.mockResolvedValue([])` in `beforeEach`).
 
 1. Rework `direct visit` test → `direct visit fetches the latest order and renders it`: `listOrders` resolves `[ROW]` (`{ id: 9, number: 'WW-0009', furniture: 'Oak Bookshelf', wood: 'Oak', status: 'Pending', eta: '1-3 days', createdAt: '...' }`); expect panel lines `Order #: WW-0009`, `Furniture: Oak Bookshelf`, `Status: Pending`, `Estimated Response: 1-3 days`; heading/copy asserts stay. Keep the VIEW MY ORDERS and BACK TO HOME tests (they now hit the mocked module harmlessly).
 2. New `direct visit with no orders shows the no-recent-order line`: `listOrders` resolves `[]`; expect exactly `No recent order found.`
 3. New `fallback fetch failure shows the raw message`: `listOrders` rejects `new Error('network down')`; expect `network down` visible, no `Order #: ` line.
 
-- [ ] **Step 2: Run to verify RED** — direct-visit test fails (page renders DEFAULT_ORDER, never fetches); the two new tests fail.
+- [x] **Step 2: Run to verify RED** — direct-visit test fails (page renders DEFAULT_ORDER, never fetches); the two new tests fail.
 
-- [ ] **Step 3: Implement.** In `OrderConfirmationPage.jsx`: drop the `DEFAULT_ORDER` import; `const savedOrder = state?.order`; `const [fetched, setFetched] = useState(null)`; `useEffect` runs only when `!savedOrder`: `listOrders().then((rows) => setFetched(rows[0] ?? null)).catch((e) => setFetchError(e.message))` with a `loading` flag — render `null` while fetching. Render precedence: `savedOrder ?? fetched` → panel (lines unchanged); fetch error → `<p role="alert">{fetchError}</p>`; empty (`savedOrder` absent, fetch settled, no row) → `<p>No recent order found.</p>`. Then delete `DEFAULT_ORDER` from `orders.js` and its test from `orders.test.js`.
+- [x] **Step 3: Implement.** In `OrderConfirmationPage.jsx`: drop the `DEFAULT_ORDER` import; `const savedOrder = state?.order`; `const [fetched, setFetched] = useState(null)`; `useEffect` runs only when `!savedOrder`: `listOrders().then((rows) => setFetched(rows[0] ?? null)).catch((e) => setFetchError(e.message))` with a `loading` flag — render `null` while fetching. Render precedence: `savedOrder ?? fetched` → panel (lines unchanged); fetch error → `<p role="alert">{fetchError}</p>`; empty (`savedOrder` absent, fetch settled, no row) → `<p>No recent order found.</p>`. Then delete `DEFAULT_ORDER` from `orders.js` and its test from `orders.test.js`.
 
-- [ ] **Step 4: Run to verify GREEN.**
+- [x] **Step 4: Run to verify GREEN.**
 
-- [ ] **Step 5: Gate + commit.** Full suite (expect **146**) + lint clean.
+- [x] **Step 5: Gate + commit.** Full suite (expect **146**) + lint clean.
 
 ```bash
 git add src/pages/OrderConfirmationPage src/lib/orders.js src/lib/orders.test.js
@@ -272,15 +272,15 @@ git push origin feat/orders-persistence
 - Consumes: `listOrders()` (Task 2).
 - Produces: the `/my-orders` screen renders `OrderRecord[]` as cards.
 
-- [ ] **Step 1: RED — rework + new tests.** Mock `../../lib/orders` (`listOrders`, hoisted; default `[]`).
+- [x] **Step 1: RED — rework + new tests.** Mock `../../lib/orders` (`listOrders`, hoisted; default `[]`).
 
 1. Rework the existing test → `renders the heading and the empty line when there are no orders`: expect heading `My Orders` + `No orders yet.`
 2. New `renders the user's orders as cards newest first`: `listOrders` resolves `[ROW_2 (WW-0002), ROW_1 (WW-0001)]`; expect both cards; card content: `Order #: WW-0002`, furniture, `Pending`, `1-3 days`, and the date `new Date(createdAt).toLocaleDateString('en-US', { dateStyle: 'medium' })`.
 3. New `shows the raw error and retries`: `listOrders` rejects `new Error('network down')` → `network down` visible + a `Retry` button; make the mock resolve and click Retry → the empty line (or cards) appears.
 
-- [ ] **Step 2: Run to verify RED.**
+- [x] **Step 2: Run to verify RED.**
 
-- [ ] **Step 3: Implement.**
+- [x] **Step 3: Implement.**
   - `MyOrdersPage.jsx`: `listOrders()` on mount via `useEffect`; state `{ orders, loading, error }`; `loading` → `null`; error → `<p role="alert">{error}</p>` + `<button type="button" className="my-orders__retry" onClick={load}>Retry</button>`; empty → the pinned `No orders yet.`; cards:
 
 ```jsx
@@ -296,9 +296,9 @@ git push origin feat/orders-persistence
   - CSS (tokens only): `.my-orders__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-lg); }`, `.my-orders__card { background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--gap-lg); display: grid; gap: var(--gap-sm); }`, `.my-orders__card-number { font-weight: var(--w-700); }`.
   - `App.jsx`: rename the import and the route element.
 
-- [ ] **Step 4: Run to verify GREEN.**
+- [x] **Step 4: Run to verify GREEN.**
 
-- [ ] **Step 5: Gate + commit.** Full suite (expect **148**) + lint clean.
+- [x] **Step 5: Gate + commit.** Full suite (expect **148**) + lint clean.
 
 ```bash
 git add -A
@@ -314,11 +314,11 @@ git push origin feat/orders-persistence
 **Interfaces:**
 - Consumes: everything above, deployed.
 
-- [ ] **Step 1: Prereq check:** confirm the `migrate` check is green in the deploy run (Task 1's job ran; the table exists).
+- [x] **Step 1: Prereq check:** confirm the `migrate` check is green in the deploy run (Task 1's job ran; the table exists).
 
-- [ ] **Step 2: Gate + merge + deploy.** Full suite (148) + lint on the branch → merge `feat/orders-persistence` into `main` (`--no-ff`) → push → `gh run watch` until the Pages deploy is green.
+- [x] **Step 2: Gate + merge + deploy.** Full suite (148) + lint on the branch → merge `feat/orders-persistence` into `main` (`--no-ff`) → push → `gh run watch` until the Pages deploy is green.
 
-- [ ] **Step 3: Live smoke** (fresh throwaway accounts `woodworks-smoke4@` and `woodworks-smoke5@wood-works-demo.invalid`, password `Demo-Wood-2026`), headless Playwright Edge channel:
+- [x] **Step 3: Live smoke** (fresh throwaway accounts `woodworks-smoke4@` and `woodworks-smoke5@wood-works-demo.invalid`, password `Demo-Wood-2026`), headless Playwright Edge channel:
 
 1. Account A signs up → lands signed-in.
 2. A opens `/custom-order`, fills the six fields, submits → confirmation shows `Order #: WW-####` (a DB-assigned number, not `WW-0001` from a module counter).
