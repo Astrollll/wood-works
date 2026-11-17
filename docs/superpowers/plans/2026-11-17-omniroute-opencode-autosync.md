@@ -21,6 +21,9 @@
 - Exclude deprecated names matching `deprecat|degrad|legacy|sunset|retire`, plus `old` only as a `-`, `_`, or `/` bounded segment.
 - Exclude dead prefixes `dva/`, `cxa/`, `aug/`, `no-think/dva/`, exact `agy/gemini-pro-agent`.
 - Dedupe exact IDs case-insensitively; output sorted.
+- Collapse OpenRouter effort tiers: if a base `X:free` row exists, drop all
+  `X:free-(high|low|medium|max|minimal|none|xhigh)` variants; if no base exists,
+  keep one real variant and never fabricate an unlisted `:free` id.
 - Backup `opencode.jsonc.bak-sync-<yyyyMMdd-HHmmss>` before each write; write `.tmp` then rename.
 - Empty catalog, HTTP error, bad JSON, missing/malformed config → nonzero exit, no write.
 - Never log or persist the API key.
@@ -68,7 +71,7 @@ Expected: FAIL with "Cannot find module ... filter.js"
 
 - [ ] **Step 3: Implement `filter.js`**
 
-Export exactly `selectModelIds` and `desiredHash`. Use `node:crypto`. Apply the Global Constraints rules in order: dead prefix → non-chat name → deprecated name → free check → dedupe. Chat capability: include when `output_modalities` contains `text`, or when it is absent and `supported_endpoints` contains `chat`. Keep `auto` as a literal prepended before dedupe.
+Export exactly `selectModelIds` and `desiredHash`. Use `node:crypto`. Apply the Global Constraints rules in order: dead prefix → non-chat name → deprecated name → free check → effort-tier collapse → dedupe. Chat capability: a non-empty `output_modalities` array must contain `text`; empty/absent metadata is treated as chat. Keep `auto` as a literal prepended before dedupe.
 
 - [ ] **Step 4: Run test to verify it passes**
 

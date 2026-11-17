@@ -91,6 +91,14 @@ Include an ID if ALL of the following hold:
 - Its name does not match `deprecat|degrad|legacy|sunset|retire`, nor an
   `old` segment bounded by `-`, `_`, or `/` (avoids false hits like `threshold`).
 - Its ID has not already been added (exact-string dedupe, case-insensitive).
+- Reasoning-effort tiers are collapsed to one picker entry per base model.
+  OpenRouter publishes `baidu/ernie-5.5-flash-preview:free`,
+  `particle-ai/particle-1:free`, `nemotron-3-ultra-550b-a55b:free` and their
+  `:free-high` / `:free-low` / `:free-medium` / `:free-max` / `:free-minimal` /
+  `:free-none` / `:free-xhigh` siblings as separate catalog rows. These are
+  the same model, so when a base `:free` row exists the variants are dropped.
+  If no base row exists, keep one concrete variant and never synthesize an
+  unlisted `:free` id (it may not be callable).
 
 Exclude every `auto/*` combo.
 
