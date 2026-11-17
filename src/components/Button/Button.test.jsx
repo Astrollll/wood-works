@@ -48,4 +48,9 @@ describe('Button', () => {
     )
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit')
   })
+
+  test('renders with the disabled attribute when disabled', () => {
+    render(<Button disabled>X</Button>)
+    expect(screen.getByRole('button', { name: 'X' })).toBeDisabled()
+  })
 })

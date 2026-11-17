@@ -1,8 +1,25 @@
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import CustomOrderPage from './CustomOrderPage'
+
+const insertOrder = vi.hoisted(() => vi.fn())
+vi.mock('../../lib/orders', () => ({ insertOrder }))
+
+const SAVED_ORDER = {
+  id: 1,
+  number: 'WW-0001',
+  furniture: 'Modern Oak Shelf',
+  wood: 'Oak',
+  status: 'Pending',
+  eta: '1-3 days',
+  createdAt: '2026-11-17T00:00:00.000Z',
+}
+
+beforeEach(() => {
+  insertOrder.mockReset()
+})
 
 function OrderConfirmationStub() {
   const { state } = useLocation()
@@ -73,7 +90,8 @@ describe('CustomOrderPage (Figma screen 13)', () => {
     expect(screen.queryByText(/ORDER CONFIRMATION STUB/)).not.toBeInTheDocument()
   })
 
-  test('valid submit routes to confirmation carrying the entered furniture type', async () => {
+  test('valid submit routes to confirmation carrying the returned row', async () => {
+    insertOrder.mockResolvedValue(SAVED_ORDER)
     const user = userEvent.setup()
     renderCustomOrder()
     await user.type(screen.getByLabelText('Furniture Type'), 'Modern Oak Shelf')
@@ -83,8 +101,62 @@ describe('CustomOrderPage (Figma screen 13)', () => {
     await user.type(screen.getByLabelText('Height'), '3')
     await user.type(screen.getByLabelText('Quantity'), '1')
     await user.click(screen.getByRole('button', { name: 'SUBMIT CUSTOM ORDER.' }))
+    expect(insertOrder).toHaveBeenCalledWith({
+      'furniture-type': 'Modern Oak Shelf',
+      'wood-type': 'Oak',
+      length: '4',
+      width: '2',
+      height: '3',
+      quantity: '1',
+      notes: '',
+    })
     expect(
       await screen.findByText(/ORDER CONFIRMATION STUB WW-0001 Modern Oak Shelf/),
     ).toBeInTheDocument()
   })
+
+  test('insert failure shows the raw message and stays', async () => {
+    insertOrder.mockRejectedValue(new Error('network down'))
+    const user = userEvent.setup()
+    renderCustomOrder()
+    await fillValidForm(user)
+    await user.click(screen.getByRole('button', { name: 'SUBMIT CUSTOM ORDER.' }))
+    expect(await screen.findByText('network down')).toBeInTheDocument()
+    expect(screen.queryByText(/ORDER CONFIRMATION STUB/)).not.toBeInTheDocument()
+    expect(
+      screen.getByText('Create Your Custom Furniture'),
+    ).toBeInTheDocument()
+  })
+
+  test('submit is disabled while the insert is in flight', async () => {
+    insertOrder.mockImplementation(() => new Promise(() => {}))
+    const user = userEvent.setup()
+    renderCustomOrder()
+    await fillValidForm(user)
+    await user.click(screen.getByRole('button', { name: 'SUBMIT CUSTOM ORDER.' }))
+    expect(
+      screen.getByRole('button', { name: 'SUBMIT CUSTOM ORDER.' }),
+    ).toBeDisabled()
+  })
+
+  test('submit re-enables when the insert fails', async () => {
+    insertOrder.mockRejectedValue(new Error('network down'))
+    const user = userEvent.setup()
+    renderCustomOrder()
+    await fillValidForm(user)
+    await user.click(screen.getByRole('button', { name: 'SUBMIT CUSTOM ORDER.' }))
+    await screen.findByText('network down')
+    expect(
+      screen.getByRole('button', { name: 'SUBMIT CUSTOM ORDER.' }),
+    ).not.toBeDisabled()
+  })
 })
+
+async function fillValidForm(user) {
+  await user.type(screen.getByLabelText('Furniture Type'), 'Modern Oak Shelf')
+  await user.type(screen.getByLabelText('Wood Type'), 'Oak')
+  await user.type(screen.getByLabelText('Length'), '4')
+  await user.type(screen.getByLabelText('Width'), '2')
+  await user.type(screen.getByLabelText('Height'), '3')
+  await user.type(screen.getByLabelText('Quantity'), '1')
+}

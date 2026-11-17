@@ -163,6 +163,15 @@
   color: var(--color-link-blue);
 }
 
+.custom__form-error {
+  align-self: center;
+  margin: 0;
+  font-family: var(--font-inter);
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  color: var(--color-error);
+}
+
 .custom__submit {
   display: flex;
   justify-content: center;

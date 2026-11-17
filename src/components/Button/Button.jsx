@@ -8,12 +8,14 @@ import './Button.css'
 export default function Button({
   variant = 'filled',
   type = 'button',
+  disabled = false,
   onClick,
   children,
 }) {
   return (
     <button
       type={type}
+      disabled={disabled}
       onClick={onClick}
       className={variant === 'outline' ? 'btn btn--outline' : 'btn btn--filled'}
     >

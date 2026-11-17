@@ -4,7 +4,7 @@ import PageLayout from '../../layouts/PageLayout/PageLayout'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import { getProduct, DIMENSIONS_PLAIN } from '../../data/products'
-import { createOrder } from '../../lib/orders'
+import { insertOrder } from '../../lib/orders'
 import { isFilled } from '../../lib/validation'
 import './CustomOrderPage.css'
 
@@ -34,20 +34,24 @@ const EMPTY_VALUES = {
  * Light form card (1px black stroke) holding the dining-table summary block,
  * the six 420px fields with white Inter 700 labels, the square-cornered
  * notes textarea, the blue upload link, and SUBMIT CUSTOM ORDER.
- * Submit builds a mock order record and routes with router state.
+ * Submit inserts a real order (database-assigned number) and routes with
+ * router state; failures render inline and the button is inert while in flight.
  */
 export default function CustomOrderPage() {
   const navigate = useNavigate()
   const product = getProduct(SUMMARY_PRODUCT_ID)
   const [values, setValues] = useState(EMPTY_VALUES)
   const [errors, setErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  const [formError, setFormError] = useState('')
 
   const setValue = (key) => (value) => {
     setValues((prev) => ({ ...prev, [key]: value }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
+    setFormError('')
     const next = {}
     for (const { id, label } of FORM_FIELDS) {
       if (!isFilled(values[id])) {
@@ -55,9 +59,15 @@ export default function CustomOrderPage() {
       }
     }
     setErrors(next)
-    if (Object.keys(next).length === 0) {
-      const order = createOrder({ furniture: values['furniture-type'] })
+    if (Object.keys(next).length !== 0) return
+    setSubmitting(true)
+    try {
+      const order = await insertOrder(values)
       navigate('/order-confirmation', { state: { order } })
+    } catch (error) {
+      setFormError(error.message)
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -115,8 +125,14 @@ export default function CustomOrderPage() {
               + Upload Reference Image.
             </button>
 
+            {formError && (
+              <p className="custom__form-error" role="alert">
+                {formError}
+              </p>
+            )}
+
             <div className="custom__submit">
-              <Button variant="filled" type="submit">
+              <Button variant="filled" type="submit" disabled={submitting}>
                 SUBMIT CUSTOM ORDER.
               </Button>
             </div>
