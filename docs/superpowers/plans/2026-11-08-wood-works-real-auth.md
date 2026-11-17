@@ -231,7 +231,7 @@ Tests to write (names exact):
 - Modify: `README.md` (real-auth section + env setup)
 - No new tests (infrastructure; verification is the live deployment).
 
-- [ ] **Step 1: Workflow** add to the existing build step:
+- [x] **Step 1: Workflow** add to the existing build step:
 
 ```yaml
         env:
@@ -239,17 +239,20 @@ Tests to write (names exact):
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 ```
 
-- [ ] **Step 2: README** add under Getting started: copy `.env.example` -> `.env.local` with the project URL + anon key; note auth is real (signup/login) and 03-09 remains mock.
-- [ ] **Step 3: Prereq (user action):** Supabase project exists; keys received; repo secrets set (`gh secret set VITE_SUPABASE_URL`, `gh secret set VITE_SUPABASE_ANON_KEY`).
-- [ ] **Step 4: Gate + merge:** full suite + lint; commit `chore: pages env for auth + readme docs`; merge `feat/real-auth` into `main`; push; `gh run watch` -> Pages deploy green.
-- [ ] **Step 5: Live smoke (acceptance):** headless Playwright (Edge channel) against `https://astrollll.github.io/wood-works/`:
+- [x] **Step 2: README** add under Getting started: copy `.env.example` -> `.env.local` with the project URL + anon key; note auth is real (signup/login) and 03-09 remains mock.
+- [x] **Step 3: Prereq (user action):** Supabase project exists; keys received; repo secrets set (`gh secret set VITE_SUPABASE_URL`, `gh secret set VITE_SUPABASE_ANON_KEY`).
+- [x] **Step 4: Gate + merge:** full suite + lint; commit `chore: pages env for auth + readme docs`; merge `feat/real-auth` into `main`; push; `gh run watch` -> Pages deploy green.
+  - Executed: merge ed88545; first run 43576853779 red (CI test step lacked env: 7 suites importing the real seam died; Node 20 broke the Vitest reporter) -> fix 4064395 (setup.js seeds inert test env via vi.stubEnv; Node 22); run 43577192031 green.
+- [x] **Step 5: Live smoke (acceptance):** headless Playwright (Edge channel) against `https://astrollll.github.io/wood-works/`:
   1. unauth direct `/home` -> login screen
   2. real signup (throwaway account, e.g. `woodworks-demo1@<mail-drop>`) -> lands logged-in; 06 copy intact
   3. reload `/home` -> still signed in (session survives refresh)
   4. popover shows the throwaway email; Log out -> `/login`
   5. duplicate signup of the same email -> `Account already exists - try logging in.`
   - Record results in the session; report to the user.
+  - Executed: run 1: 6/7 - real signup landed /home, not 06 (SIGNED_IN event + signUp resolution race; GuestRoute bounce overwrote the 06 push 3ms later - proven by a live history-hook nav log). Fix 6d71ed9: GuestRoute arrival semantics (bounce only users who arrive signed-in; render-phase state-adjustment idiom). Re-run 43993632965 green -> smoke 7/7 (allPass: guard redirect, real signup -> 06, guard pass-through, refresh survival, popover email + logout -> /login, duplicate -> pinned copy).
 - [ ] **Step 6: Post-run:** delete `throwaway` accounts? (Supabase dashboard -> remove demo users; optional, user decides.) Final whole-branch review per executing-plans.
+  - Final whole-branch review: done pre-merge (fresh-context subagent, verdict "with fixes"; 3 Important findings fixed f17c2ca/00b2512; upheld by smoke). Throwaway deletion: user's call (list in final report).
 
 ## Self-Review Notes (fixes applied while writing)
 
