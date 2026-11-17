@@ -56,3 +56,16 @@
 .confirmation__actions .btn {
   width: var(--size-cta-w);
 }
+
+.confirmation__fetch-error,
+.confirmation__empty {
+  margin: 0;
+  font-size: var(--fs-24);
+  line-height: var(--lh-36);
+  font-weight: var(--w-600);
+  color: var(--color-text);
+}
+
+.confirmation__fetch-error {
+  color: var(--color-error);
+}

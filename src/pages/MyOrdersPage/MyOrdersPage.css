@@ -1,0 +1,86 @@
+/* My Orders stub — store design language, 64/80 rhythm. */
+
+.my-orders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  padding: var(--section-pad-y) var(--page-gutter);
+}
+
+.my-orders__title {
+  font-size: var(--fs-40);
+  line-height: var(--lh-48);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+}
+
+.my-orders__empty {
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}
+
+.my-orders__error {
+  margin: 0;
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-600);
+  color: var(--color-error);
+}
+
+.my-orders__retry {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--gap-xs) var(--gap-md);
+  cursor: pointer;
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+}
+
+.my-orders__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--gap-lg);
+}
+
+.my-orders__card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--gap-lg);
+  display: grid;
+  gap: var(--gap-sm);
+}
+
+.my-orders__card-number {
+  margin: 0;
+  font-size: var(--fs-18);
+  line-height: var(--lh-27);
+  font-weight: var(--w-700);
+  color: var(--color-text);
+}
+
+.my-orders__card-furniture {
+  margin: 0;
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--w-600);
+  color: var(--color-text);
+}
+
+.my-orders__card-status,
+.my-orders__card-eta,
+.my-orders__card-date {
+  margin: 0;
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-400);
+  color: var(--color-text-muted);
+}
