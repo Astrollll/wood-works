@@ -329,4 +329,4 @@ git push origin feat/orders-persistence
 
 Record results; report to the user.
 
-- [ ] **Step 4: Finish.** Ledger `Final:` lines; delete the plan workspace; `finishing-a-development-branch` (delete `feat/orders-persistence`); remind the user about the pending `sb_secret_` rotation if not yet done.
+- [x] **Step 4: Finish.** Ledger `Final:` lines; delete the plan workspace; `finishing-a-development-branch` (delete `feat/orders-persistence`); remind the user about the pending `sb_secret_` rotation if not yet done.
