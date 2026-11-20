@@ -44,7 +44,7 @@
   font-size: var(--fs-14);
   line-height: var(--lh-21);
   font-weight: var(--w-500);
-  color: var(--color-surface);
+  color: var(--color-text-muted);
 }
 
 .cart__row-right {
@@ -94,7 +94,7 @@
   font-size: var(--fs-14);
   line-height: var(--lh-21);
   font-weight: var(--w-500);
-  color: var(--color-surface);
+  color: var(--color-accent);
   text-decoration: underline;
 }
 
@@ -110,10 +110,23 @@
   font-size: var(--fs-14);
   line-height: var(--lh-21);
   font-weight: var(--w-600);
-  color: var(--color-surface);
+  color: var(--color-accent);
   text-decoration: underline;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+/* Narrow viewports: stack row details above the controls rather than
+   squeezing the action cluster past the card edge. */
+@media (max-width: 600px) {
+  .cart__row {
+    flex-wrap: wrap;
+  }
+
+  .cart__row-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 }

@@ -48,3 +48,11 @@ textarea:focus-visible {
   max-width: var(--page-width);
   margin-inline: auto;
 }
+
+/* Narrow viewports: the 80px Figma gutter leaves no room for four nav
+   links plus the profile control, so use the compact gutter instead. */
+@media (max-width: 600px) {
+  :root {
+    --page-gutter: var(--page-gutter-mobile);
+  }
+}

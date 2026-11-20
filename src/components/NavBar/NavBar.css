@@ -91,3 +91,33 @@
 .navbar__popover-logout:hover {
   color: var(--color-accent);
 }
+
+/* Narrow viewports: let the link group shrink into its own horizontal
+   scroller instead of pushing the profile control off-screen. */
+@media (max-width: 600px) {
+  .navbar {
+    gap: var(--gap-md);
+  }
+
+  .navbar__logo,
+  .navbar__profile {
+    flex-shrink: 0;
+  }
+
+  .navbar__links {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    gap: var(--gap-md);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .navbar__links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar__link {
+    white-space: nowrap;
+  }
+}
