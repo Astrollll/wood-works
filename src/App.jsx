@@ -18,6 +18,7 @@ import VerifyOtpPage from './pages/VerifyOtpPage/VerifyOtpPage'
 import OtpVerifiedPage from './pages/OtpVerifiedPage/OtpVerifiedPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 import ResetSuccessPage from './pages/ResetSuccessPage/ResetSuccessPage'
+import CartPage from './pages/CartPage/CartPage'
 
 /**
  * Wood Works app shell. Routes come online task-by-task per the plan;
@@ -126,6 +127,12 @@ export default function App() {
               <ProtectedRoute>
                 <MyOrdersPage />
               </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <CartPage />
             }
           />
           <Route path="/send-otp" element={<SendOtpPage />} />

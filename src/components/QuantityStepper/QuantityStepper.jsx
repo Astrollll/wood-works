@@ -4,9 +4,13 @@ import './QuantityStepper.css'
  * Figma Product Details quantity selector: − / value / + (500/16).
  * The lower bound of 1 is enforced here so every caller borrows it.
  */
-export default function QuantityStepper({ value, onChange }) {
+export default function QuantityStepper({ value, onChange, onRemove }) {
   const decrement = () => {
-    if (value > 1) onChange(value - 1)
+    if (value > 1) {
+      onChange(value - 1)
+    } else if (onRemove) {
+      onRemove()
+    }
   }
   return (
     <div className="stepper">
