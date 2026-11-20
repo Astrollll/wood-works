@@ -1,13 +1,22 @@
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import ProductDetailsPage from './ProductDetailsPage'
 
-function OrderConfirmationStub() {
+const upsertCartItem = vi.hoisted(() => vi.fn())
+const useAuth = vi.hoisted(() => vi.fn())
+vi.mock('../../lib/cart', () => ({
+  upsertCartItem,
+  // PageLayout's navbar consumes these after Task 8; harmless here.
+  listCart: vi.fn(async () => []),
+  CART_CHANGED_EVENT: 'woodworks:cart-changed',
+}))
+vi.mock('../../auth/AuthProvider', () => ({ useAuth }))
+
+function LoginStub() {
   const { state } = useLocation()
-  const furniture = state?.order?.furniture ?? 'no-order'
-  return <div>ORDER CONFIRMATION STUB {furniture}</div>
+  return <div>LOGIN STUB {state?.from?.pathname ?? 'none'}</div>
 }
 
 function renderDetails(initialEntry = '/product/wooden-dining-table') {
@@ -17,13 +26,19 @@ function renderDetails(initialEntry = '/product/wooden-dining-table') {
         <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/catalog" element={<div>CATALOG STUB</div>} />
         <Route path="/custom-order" element={<div>CUSTOM ORDER STUB</div>} />
-        <Route path="/order-confirmation" element={<OrderConfirmationStub />} />
+        <Route path="/login" element={<LoginStub />} />
       </Routes>
     </MemoryRouter>,
   )
 }
 
 describe('ProductDetailsPage (Figma screen 12)', () => {
+  beforeEach(() => {
+    useAuth.mockReturnValue({ user: { email: 'a@b.com' }, loading: false })
+    upsertCartItem.mockReset()
+    upsertCartItem.mockResolvedValue()
+  })
+
   test('renders the exact copy: title, price, description, three detail lines', () => {
     renderDetails()
     expect(
@@ -53,12 +68,32 @@ describe('ProductDetailsPage (Figma screen 12)', () => {
     expect(screen.getByText('2')).toBeInTheDocument()
   })
 
-  test('ORDER NOW creates the order record and lands on confirmation showing it', async () => {
+  test('ADD TO CART upserts the chosen quantity and flips to ADDED ✓', async () => {
     const user = userEvent.setup()
     renderDetails()
-    await user.click(screen.getByRole('button', { name: 'ORDER NOW' }))
+    await user.click(screen.getByRole('button', { name: 'Increase quantity' }))
+    await user.click(screen.getByRole('button', { name: 'ADD TO CART' }))
+    expect(upsertCartItem).toHaveBeenCalledWith('wooden-dining-table', 2)
+    expect(await screen.findByText('ADDED ✓')).toBeInTheDocument()
+  })
+
+  test('signed-out ADD TO CART routes to login carrying the product location', async () => {
+    const user = userEvent.setup()
+    useAuth.mockReturnValue({ user: null, loading: false })
+    renderDetails()
+    await user.click(screen.getByRole('button', { name: 'ADD TO CART' }))
+    expect(await screen.findByText('LOGIN STUB /product/wooden-dining-table')).toBeInTheDocument()
+    expect(upsertCartItem).not.toHaveBeenCalled()
+  })
+
+  test('upsert failure shows the raw message under the button', async () => {
+    const user = userEvent.setup()
+    upsertCartItem.mockRejectedValue(new Error('network down'))
+    renderDetails()
+    await user.click(screen.getByRole('button', { name: 'ADD TO CART' }))
+    expect(await screen.findByRole('alert')).toHaveTextContent('network down')
     expect(
-      await screen.findByText('ORDER CONFIRMATION STUB Wooden Dining Table'),
+      screen.getByRole('heading', { level: 1, name: 'Wooden Dining Table' }),
     ).toBeInTheDocument()
   })
 

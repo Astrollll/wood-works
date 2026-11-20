@@ -5,23 +5,6 @@
  */
 import { supabase } from './supabase'
 
-const orderCounter = { value: 0 }
-
-/**
- * @deprecated Mock session-order path for the catalog's ORDER NOW button
- * (spec D1: catalog stays mock this wave). The real custom-order flow uses
- * insertOrder, whose numbers are database-assigned — never generated here.
- */
-export function createOrder({ furniture }) {
-  orderCounter.value += 1
-  return {
-    number: `WW-${String(orderCounter.value).padStart(4, '0')}`,
-    furniture,
-    status: 'Pending',
-    eta: '1-3 days',
-  }
-}
-
 /** The only order shape pages ever see — never the snake_case DB columns. */
 export function toOrder(row) {
   return {
