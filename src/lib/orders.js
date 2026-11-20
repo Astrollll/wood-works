@@ -23,7 +23,7 @@ export function createOrder({ furniture }) {
 }
 
 /** The only order shape pages ever see — never the snake_case DB columns. */
-function toOrder(row) {
+export function toOrder(row) {
   return {
     id: row.id,
     number: row.order_number,
@@ -32,6 +32,16 @@ function toOrder(row) {
     status: row.status,
     eta: row.eta,
     createdAt: row.created_at,
+    items: Array.isArray(row.items)
+      ? row.items.map((item) => ({
+          productId: item.product_id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          lineTotal: item.price * item.quantity,
+        }))
+      : null,
+    total: row.total == null ? null : Number(row.total),
   }
 }
 

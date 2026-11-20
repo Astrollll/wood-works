@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { insertOrder, listOrders, createOrder } from './orders'
+import { insertOrder, listOrders, createOrder, toOrder } from './orders'
 
 const from = vi.hoisted(() => vi.fn())
 vi.mock('./supabase', () => ({ supabase: { from } }))
@@ -19,6 +19,8 @@ const DB_ROW = {
   reference_image_url: null,
   status: 'Pending',
   eta: '1-3 days',
+  items: null,
+  total: null,
 }
 
 /**
@@ -74,6 +76,8 @@ describe('insertOrder — real insert over the supabase seam', () => {
       status: 'Pending',
       eta: '1-3 days',
       createdAt: '2026-11-17T00:00:00.000Z',
+      items: null,
+      total: null,
     })
   })
 
@@ -113,6 +117,8 @@ describe('listOrders — real list over the supabase seam', () => {
         status: 'Pending',
         eta: '1-3 days',
         createdAt: '2026-11-17T00:00:00.000Z',
+        items: null,
+        total: null,
       },
       {
         id: 1,
@@ -122,8 +128,71 @@ describe('listOrders — real list over the supabase seam', () => {
         status: 'Pending',
         eta: '1-3 days',
         createdAt: '2026-11-17T00:00:00.000Z',
+        items: null,
+        total: null,
       },
     ])
+  })
+
+  test('carries cart items through the display mapper', async () => {
+    const cartRow = {
+      ...DB_ROW,
+      id: 7,
+      order_number: 'WW-0007',
+      furniture_type: 'Cart order',
+      wood_type: null,
+      length: null,
+      width: null,
+      height: null,
+      quantity: null,
+      items: [
+        { product_id: 'classic-wooden-chair', name: 'Classic Wooden Chair', price: 2500, quantity: 2 },
+      ],
+      total: '5000.00',
+    }
+    const customRow = { ...DB_ROW, id: 8, order_number: 'WW-0008' }
+    from.mockReturnValue(chain({ data: [cartRow, customRow], error: null }))
+    const rows = await listOrders()
+    expect(rows[0].items).toEqual([
+      {
+        productId: 'classic-wooden-chair',
+        name: 'Classic Wooden Chair',
+        price: 2500,
+        quantity: 2,
+        lineTotal: 5000,
+      },
+    ])
+    expect(rows[0].total).toBe(5000)
+    expect(rows[1].items).toBeNull()
+  })
+})
+
+describe('toOrder — display mapping', () => {
+  test('maps a cart snapshot into camelCase lines with line totals', () => {
+    const order = toOrder({
+      ...DB_ROW,
+      items: [
+        { product_id: 'classic-wooden-chair', name: 'Classic Wooden Chair', price: 2500, quantity: 2 },
+      ],
+      total: '5000.00',
+    })
+    expect(order.items).toEqual([
+      {
+        productId: 'classic-wooden-chair',
+        name: 'Classic Wooden Chair',
+        price: 2500,
+        quantity: 2,
+        lineTotal: 5000,
+      },
+    ])
+    expect(order.total).toBe(5000)
+    expect(typeof order.total).toBe('number')
+  })
+
+  test('keeps custom orders null-safe', () => {
+    const order = toOrder({ ...DB_ROW, items: null, total: null })
+    expect(order.items).toBeNull()
+    expect(order.total).toBeNull()
   })
 })
 
