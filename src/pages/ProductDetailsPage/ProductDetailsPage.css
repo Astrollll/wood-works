@@ -83,6 +83,14 @@
   width: var(--size-cta-w);
 }
 
+.details__error {
+  margin: 0;
+  font-size: var(--fs-14);
+  line-height: var(--lh-21);
+  font-weight: var(--w-600);
+  color: var(--color-error);
+}
+
 .details__related {
   display: grid;
   grid-template-columns: repeat(4, var(--size-card-w));

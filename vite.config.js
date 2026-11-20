@@ -20,6 +20,7 @@ export default defineConfig(({ command, mode }) => {
       environment: 'jsdom',
       setupFiles: ['./src/test/setup.js'],
       globals: true,
+      cache: false,
     },
   }
 })

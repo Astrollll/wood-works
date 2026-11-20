@@ -20,12 +20,14 @@ vi.mock('../../lib/supabase', () => ({
   },
 }))
 
-function renderLogin() {
+function renderLogin(initialEntries = ['/login']) {
   return render(
-    <MemoryRouter initialEntries={['/login']}>
+    <MemoryRouter initialEntries={initialEntries}>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<div>HOME PAGE STUB</div>} />
+        <Route path="/cart" element={<div>CART STUB</div>} />
+        <Route path="/product/wooden-dining-table" element={<div>PRODUCT STUB</div>} />
         <Route path="/send-otp" element={<div>SEND OTP STUB</div>} />
         <Route path="/signup" element={<div>SIGNUP STUB</div>} />
       </Routes>
@@ -101,6 +103,26 @@ describe('LoginPage (Figma screen 01)', () => {
       password: 'secret',
     })
     expect(await screen.findByText('HOME PAGE STUB')).toBeInTheDocument()
+  })
+
+  test('returns to an object state.from after sign-in', async () => {
+    const user = userEvent.setup()
+    renderLogin([{ pathname: '/login', state: { from: { pathname: '/cart' } } }])
+    await user.type(screen.getByPlaceholderText('Enter your email'), 'a@b.com')
+    await user.type(screen.getByPlaceholderText('Enter your password'), 'secret')
+    signInWithPassword.mockResolvedValue({ data: {}, error: null })
+    await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(await screen.findByText('CART STUB')).toBeInTheDocument()
+  })
+
+  test('returns to a string state.from after sign-in', async () => {
+    const user = userEvent.setup()
+    renderLogin([{ pathname: '/login', state: { from: '/cart' } }])
+    await user.type(screen.getByPlaceholderText('Enter your email'), 'a@b.com')
+    await user.type(screen.getByPlaceholderText('Enter your password'), 'secret')
+    signInWithPassword.mockResolvedValue({ data: {}, error: null })
+    await user.click(screen.getByRole('button', { name: 'LOG IN' }))
+    expect(await screen.findByText('CART STUB')).toBeInTheDocument()
   })
 
   test('bad credentials render the inline error and stay', async () => {

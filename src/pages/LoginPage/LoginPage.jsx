@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import AuthLayout from '../../layouts/AuthLayout/AuthLayout'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
@@ -11,10 +11,12 @@ import '../../styles/auth-form.css'
  * Figma screen 01 — Login.
  * Left: brand panel (AuthLayout). Right: "Welcome Back" card with email +
  * password, a remember row, LOG IN, and the sign-up handoff line.
- * Signs in via Supabase; success navigates to /home.
+ * Signs in via Supabase; success returns to state.from (string or location
+ * object) so a mid-task guest lands back where they were, defaulting to /home.
  */
 export default function LoginPage() {
   const navigate = useNavigate()
+  const location = useLocation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
@@ -36,7 +38,9 @@ export default function LoginPage() {
         setErrors({ ...next, password: error.message })
         return
       }
-      navigate('/home')
+      const from = location.state?.from
+      const target = typeof from === 'string' ? from : (from?.pathname ?? '/home')
+      navigate(target)
     }
   }
 
